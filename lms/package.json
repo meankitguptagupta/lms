@@ -1,0 +1,24 @@
+{
+  "name": "lms",
+  "version": "1.0.0",
+  "description": "API for library management system",
+  "main": "index.js",
+  "bin": {
+    "migration": "console/migration"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "migration"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ankit Gupta <meankitgupta.gupta@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.17.1",
+    "restify": "^8.5.0"
+  }
+}
