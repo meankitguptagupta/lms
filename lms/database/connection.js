@@ -4,7 +4,8 @@ const mysql = require('mysql'),
         user : 'development',
         password : 'password',
         database: 'lms',
-        port: '3306'
+        port: '3306',
+        connectTimeout: 1000
     });
  
 connection.connect(function(err) {
