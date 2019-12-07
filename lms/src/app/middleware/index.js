@@ -1,3 +1,6 @@
 module.exports = {
-    signup: require ('./signup')
+    signup: require ('./signup'),
+    allowRole: require ('./allowRole'),
+    login: require ('./login'),
+    postBooks: require ('./postBooks')
 }

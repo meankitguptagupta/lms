@@ -23,7 +23,7 @@ module.exports = (req, res, next) => {
         errors.push('Contact-Number Invalid!');
 
     if (errors.length)
-        return res.send (422, {status: false, message: 'Parameters Errors!', data: errors});
+        return res.send (422, {status: false, message: 'Parameters Errors!', data: {...errors}});
 
-    return next;
+    return next();
 }
