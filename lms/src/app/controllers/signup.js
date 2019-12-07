@@ -1,32 +1,33 @@
 const checkUserExistsByEmail = require ('../repositories/user/checkUserExistsByEmail'),
     registerUser = require ('../repositories/user/registerUser'),
-    addUserProfile = require ('../repositories/user/addUserProfile');
+    eventEmitter = require ('../events');
 
 module.exports = (req, res) => {
-    // check if email already exists
-    return checkUserExistsByEmail(req.body.email).then(resolve => {
-        // customer email already exists
-        if (resolve.exists)
+    checkUserExistsByEmail((req.body.email).trim(), ((err, result, fields) => {
+        // check if db error exists
+        if (err) 
+            return res.send (500, {status: false, message: 'Database Error', data: {}}) ;
+
+        // check if user already exists
+        if (result[0].exists)
             return res.send (409, {status: false, message: 'Email already registered!', data: {}});
 
         // register user
-        registerUser (req.body.email, req.body.password).then(resolve => {
+        registerUser ((req.body.email).trim(), (req.body.password).trim(), (err, result, fields) => {
+            if (err) 
+                return res.send (500, {status: false, message: 'Database Error', data: {}}) ;
+          
+            // return success
+            res.send (200, {status: true, message: 'User successfully registered!', data: {}});
 
-            // add userprofile
-            addUserProfile (resolve.insertId, req.body.first_name, req.body.last_name, req.body.contact_number).then(resolve => {
-
-                // return success
-                return res.send (200, {status: true, message: 'User successfully registered!', data: {}});
-
-            }).catch (err => {
-                return res.send (500, {status: false, message: 'Database Error', data: {}});
-            })
-
-        }).catch (err => {
-            return res.send (500, {status: false, message: 'Database Error', data: {}});
+            // call event after user registration
+            eventEmitter.emit('userRegistered', {
+                user_id: result.insertId,
+                first_name: (req.body.first_name).trim(), 
+                last_name: (req.body.last_name).trim(), 
+                contact_number: (req.body.contact_number).trim()
+            });
         })
-
-    }).catch (err => {
-        return res.send (500, {status: false, message: 'Database Error', data: {}});
-    })
+        
+    }));
 }
