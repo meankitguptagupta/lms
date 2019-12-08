@@ -9,5 +9,5 @@ module.exports = (server, passport) => {
 
     // book
     server.post ('/books', passport.authenticate('jwt', {session: false}), middleware.allowRole (['admin']), middleware.postBooks, controllers.books.add);
-    server.post ('/books', passport.authenticate('jwt', {session: false}), controllers.books.list);
+    server.get ('/books', passport.authenticate('jwt', {session: false}), controllers.books.list);
 }

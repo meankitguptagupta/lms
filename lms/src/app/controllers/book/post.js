@@ -1,13 +1,16 @@
-const addBook = require ('../../repositories/book/create');
+const addBook = require ('../../repositories/book/create'),
+    getParams = require ('../../helpers/getParams');
 
 module.exports = (req, res) => {
+    let params = getParams(req);
+
     let book = {
-        title: (req.body.title).trim(),
-        genere: (req.body.genere).trim(),
-        is_premium: parseInt ((req.body.is_premium).trim()),
-        academy_type: (req.body.academy_type).trim(),
-        academy_standard: parseInt ((req.body.academy_standard).trim()),
-        fields: (req.body.fields) ? (req.body.fields).trim() : null,
+        title: params.title,
+        genere: params.genere,
+        is_premium: parseInt (params.is_premium),
+        academy_type: params.academy_type,
+        academy_standard: parseInt (params.academy_standard),
+        fields: params.fields ? params.fields : null,
     }
 
     // save book into DB

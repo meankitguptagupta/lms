@@ -1,44 +1,35 @@
-const generes = require ('../enum/genres');
+const generes = require ('../enum/genres'),
+getParams = require ('../helpers/getParams'),
+validateRequire = require ('../Validations/require');
 
 module.exports = (req, res, next) => {
-    let errors = [];
-    
-    // velidate Title
-    if (!(req.body.title) || !(req.body.ematitleil).trim())
-        errors.push('Title required!');
-    else if (((req.body.ematitleil).trim()).length > 50)
-        errors.push('Title can not be more that 50 characters!');
+    let params = getParams(req),
+        errors = validateRequire (params, [
+            {key: 'title', length: 50}, 
+            {key: 'genere', length: 50},
+            {key: 'is_premium', length: 1},
+            {key: 'academy_type', length: 50},
+            {key: 'academy_standard', length: null}
+        ]);
 
     // velidate Genre
-    if (!(req.body.genere) || !(req.body.genere).trim())
-        errors.push('Genere required!');
-    else if (!generes.includes ((req.body.genere).trim().toLowerString()))
+    if (!errors.length && !generes.includes ((params.genere).toLowerString()))
         errors.push('generes must be one from: ', generes.join(', '));
-    else if (((req.body.genere).trim()).length > 50)
-        errors.push('Genere can not be more that 50 characters!');
 
     // velidate Gener
-    if (!(req.body.is_premium) || !(req.body.is_premium).trim())
-        errors.push('is_premium required!');
-    else if (![1,0].includes ((req.body.is_premium).trim()))
+    if (!errors.length && ![1,0].includes (params.is_premium))
         errors.push('Is-premium must be one from 0,1.');
 
     // velidate academy_type
-    if (!(req.body.academy_type) || !(req.body.academy_type).trim())
-        errors.push('academy-type required!');
-    else if (!academy_type.includes ((req.body.academy_type).trim().toLowerString()))
+    if (!errors.length && !academy_type.includes ((params.academy_type).toLowerString()))
         errors.push('academy-type must be one from: ', academy_type.join(', '));
-    else if (((req.body.academy_type).trim()).length > 50)
-        errors.push('academy-type can not be more that 50 characters!');
 
     // velidate academy_standard
-    if (!(req.body.academy_standard) || !(req.body.academy_standard).trim())
-        errors.push('academy_standard required!');
-    else if (parseInt ((req.body.academy_standard).trim()) > 12)
+    if (!errors.length && parseInt (params.academy_standard) > 12)
         errors.push('Academy-standard can not be more than 12!');
 
     if (errors.length)
-        return res.send (422, {status: false, message: 'Parameters Errors!', data: {...errors}});
+        return res.send (422, {status: false, message: 'Parameters Errors!', data: errors});
 
     return next();
 }

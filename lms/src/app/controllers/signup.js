@@ -1,12 +1,14 @@
 const checkUserExistsByEmail = require ('../repositories/user/checkUserExistsByEmail'),
     registerUser = require ('../repositories/user/registerUser'),
     hash = require ('../helpers/hash'),
-    eventEmitter = require ('../events');
+    eventEmitter = require ('../events'),
+    getParams = require ('../helpers/getParams');
 
 module.exports = (req, res) => {
-
+    let params = getParams(req);
+    
     // check if Email already exists
-    checkUserExistsByEmail((req.body.email).trim(), ((err, result, fields) => {
+    checkUserExistsByEmail (params.email, ((err, result, fields) => {
         // check if db error exists
         if (err) 
             return res.send (500, {status: false, message: 'Database Error', data: {}}) ;
@@ -16,16 +18,16 @@ module.exports = (req, res) => {
             return res.send (409, {status: false, message: 'Email already registered!', data: {}});
 
         // register user
-        registerUser ((req.body.email).trim(), hash.hashStr ((req.body.password).trim()), (err, result, fields) => {
+        registerUser (params.email, hash.hashStr (params.password), (err, result, fields) => {
             if (err) 
                 return res.send (500, {status: false, message: 'Database Error', data: {}}) ;
 
             // call event after user registration
             eventEmitter.emit('userRegistered', {
                 user_id: result.insertId,
-                first_name: (req.body.first_name).trim(), 
-                last_name: (req.body.last_name).trim(), 
-                contact_number: (req.body.contact_number).trim()
+                first_name: params.first_name, 
+                last_name: params.last_name, 
+                contact_number: params.contact_number
             });
             
             // return success
