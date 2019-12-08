@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `books` (
     `title` VARCHAR(50) DEFAULT NULL COMMENT 'name of the book',
     `genere` VARCHAR(50) DEFAULT NULL COMMENT 'genere of the book like History, Novel, etc.',
     `is_premium` TINYINT(1) DEFAULT NULL,
-    `academy_type` VARCHAR(10) DEFAULT NULL,
+    `academy_type` VARCHAR(50) DEFAULT NULL,
     `academy_standard` SMALLINT(5) DEFAULT NULL,
     `fields` TEXT DEFAULT NULL COMMENT 'Other information of the book',
     `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,

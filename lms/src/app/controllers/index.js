@@ -4,6 +4,7 @@ module.exports = {
     login: require ('./login'),
     profile: require ('./profile'),
     books: {
-        add: require ('./book/post')
+        add: require ('./book/post'),
+        list: require ('./book/list')
     }
 }
