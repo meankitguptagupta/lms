@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS `books` (
     `id` INT(10) AUTO_INCREMENT PRIMARY KEY,
+    `tag_id` VARCHAR(10) DEFAULT NULL COMMENT 'custom id of the book',
     `title` VARCHAR(50) DEFAULT NULL COMMENT 'name of the book',
     `genere` VARCHAR(50) DEFAULT NULL COMMENT 'genere of the book like History, Novel, etc.',
     `is_premium` TINYINT(1) DEFAULT NULL,

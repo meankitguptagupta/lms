@@ -10,11 +10,11 @@ module.exports = (req, res, next) => {
      * check if no error found
      * then validate Email
      */
-    if (!errors.length && !validateEmail ( params.valueOf().email ))
-        errors.push('Invalid Email!');
+    if (!Object.keys(errors).length && !validateEmail ( params.valueOf().email ))
+        errors['email'] =  'Invalid Email!';
         
 
-    if (errors.length)
+    if (Object.keys(errors).length)
         return res.send (422, {status: false, message: 'Parameters Errors!', data: errors});
 
     return next();

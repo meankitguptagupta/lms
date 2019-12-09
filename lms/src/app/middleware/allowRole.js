@@ -3,6 +3,6 @@ module.exports = (roles) => {
         if (roles.includes (req.user.role)) {
           return next();
         } 
-        return res.send(403, {status: false, message: 'Invalid access', error: 'You are not authorize to access this service'});
+        return res.send(403, {status: false, message: 'Invalid access', error: {role: 'You are not authorize to access this service'}});
     }
 }

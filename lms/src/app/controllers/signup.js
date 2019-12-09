@@ -11,16 +11,17 @@ module.exports = (req, res) => {
     checkUserExistsByEmail (params.email, ((err, result, fields) => {
         // check if db error exists
         if (err) 
-            return res.send (500, {status: false, message: 'Database Error', data: {}}) ;
+            return res.send (500, {status: false, message: 'Database Error', data: {error: 'Internal server Error'}}) ;
 
         // check if user already exists
         if (result[0].exists)
-            return res.send (409, {status: false, message: 'Email already registered!', data: {}});
+            return res.send (409, {status: false, message: 'Email already registered!', data: {email: 'Email already registered'}});
 
         // register user
         registerUser (params.email, hash.hashStr (params.password), (err, result, fields) => {
+            // check if db error exists
             if (err) 
-                return res.send (500, {status: false, message: 'Database Error', data: {}}) ;
+                return res.send (500, {status: false, message: 'Database Error', data: {error: 'Internal server Error'}}) ;
 
             // call event after user registration
             eventEmitter.emit('userRegistered', {
@@ -31,7 +32,7 @@ module.exports = (req, res) => {
             });
             
             // return success
-            return res.send (200, {status: true, message: 'User successfully registered!', data: {}});
+            return res.send (200, {status: true, message: 'User successfully registered!', data: {user_id: result.insertId}});
         })
         
     }));
