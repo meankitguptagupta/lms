@@ -22,4 +22,4 @@ Use following steps to install the application on local
 
 # API Documentation
     Please visit the link to read postman documentation\
-    <a href="https://documenter.getpostman.com/view/3356919/SWE6ZHN6?version=latest">https://documenter.getpostman.com/view/3356919/SWE6ZHN6?version=latest</a>
+    [create an anchor](#https://documenter.getpostman.com/view/3356919/SWE6ZHN6?version=latest)
