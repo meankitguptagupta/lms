@@ -4,7 +4,7 @@ let validateEmail = require ('../Validations/validateEmail'),
 
 module.exports = (req, res, next) => {
     let params = getParams(req),
-        errors = validateRequire (params, [{key: 'email', length: 191}, {key: 'password', length: 191}]);
+        errors = validateRequire (params, [{key: 'email', max_length: 191, min_length: 1}, {key: 'password', max_length: 191, min_length: 1}]);
 
     /**
      * check if no error found

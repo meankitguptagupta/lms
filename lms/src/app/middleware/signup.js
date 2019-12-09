@@ -6,11 +6,11 @@ let validateEmail = require ('../Validations/validateEmail'),
 module.exports = (req, res, next) => {
     let params = getParams(req),
         errors = validateRequire (params, [
-            {key: 'email', length: 191}, 
-            {key: 'password', length: 191},
-            {key: 'first_name', length: 50},
-            {key: 'last_name', length: 50},
-            {key: 'contact_number', length: 10},
+            {key: 'email', max_length: 191, min_length: 1}, 
+            {key: 'password', max_length: 191, min_length: 1},
+            {key: 'first_name', max_length: 50, min_length: 1},
+            {key: 'last_name', max_length: 50, min_length: 1},
+            {key: 'contact_number', max_length: 10, min_length: 1},
         ]);
     
     /**

@@ -10,6 +10,7 @@ module.exports = (req) => {
 
     switch ((req.method).toString().toUpperCase()) {
         case 'POST':
+        case 'PUT':
             req.body ? Object.keys(req.body).map(key => { fields[key] = req.body[key].trim()} ) : {};
             return fields;
         case 'GET':

@@ -2,7 +2,10 @@ module.exports = {
     home: require ('./home'),
     signup: require ('./signup'),
     login: require ('./login'),
-    profile: require ('./profile'),
+    user: {
+        profile: require ('./user/profile'),
+        update: require ('./user/update'),
+    },
     books: {
         add: require ('./book/post'),
         list: require ('./book/list')

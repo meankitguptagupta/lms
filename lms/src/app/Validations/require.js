@@ -13,10 +13,10 @@ module.exports = (params, fields) => {
     for (field of fields) {
         if (!params.hasOwnProperty (field.key))
             errors[field.key] = `${field.key} require`;
-        else if (!params[field.key].length)
+        else if (field.min_length && params[field.key].length < field.min_length)
             errors[field.key] = `${field.key} value cann't be empty!`;
-        else if (field.length && params[field.key].length > field.length)
-            errors[field.key] = `Max length for ${field.key} is ${field.length}!`;
+        else if (field.max_length && params[field.key].length > field.max_length)
+            errors[field.key] = `Max length for ${field.key} is ${field.max_length}!`;
     }
 
     return errors;
