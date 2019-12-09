@@ -21,5 +21,5 @@ Use following steps to install the application on local
     ```npm run dev```
 
 # API Documentation
-    Please visit the link to read postman documentation
-    
+    Please visit the link to read postman documentation\
+    [a link](https://documenter.getpostman.com/view/3356919/SWE6ZHN6?version=latest)
