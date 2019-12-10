@@ -1,9 +1,14 @@
 const updateUser = require ('../../repositories/user/updateUser'),
-    getParams = require ('../../helpers/getParams');
+    getParams = require ('../../helpers/getParams'),
+    filterParams = require ('../../helpers/filterParams');
 
 module.exports = (req, res) => {
+    let user = filterParams (getParams (req), [
+                    'first_name', 'last_name', 'contact_number',
+                    'address', 'city', 'pincode'
+                ]);
 
-    updateUser (req.user.id, getParams (req), (err, result, fields) => {
+    updateUser (req.user.id, user, (err, result, fields) => {
         // check if db error exists
         if (err) 
             return res.send (500, {status: false, message: 'Database Error', data: {error: 'Internal server Error'}}) ;

@@ -8,6 +8,10 @@ module.exports = {
     },
     books: {
         add: require ('./book/post'),
-        list: require ('./book/list')
+        list: require ('./book/list'),
+        update: require ('./book/update')
+    },
+    student: {
+        patch: require ('./student/patch')
     }
 }

@@ -32,7 +32,7 @@ module.exports = (req, res) => {
             });
             
             // return success
-            return res.send (200, {status: true, message: 'User successfully registered!', data: {user_id: result.insertId}});
+            return res.send (201, {status: true, message: 'User successfully registered!', data: {user_id: result.insertId}});
         })
         
     }));

@@ -1,12 +1,11 @@
-const generes = require ('../enum/genres'),
-    academy_type = require ('../enum/academic_type'),
-    getParams = require ('../helpers/getParams'),
-    validateRequire = require ('../Validations/require');
+const generes = require ('../../enum/genres'),
+    academy_type = require ('../../enum/academic_type'),
+    getParams = require ('../../helpers/getParams'),
+    validateRequire = require ('../../Validations/require');
 
 module.exports = (req, res, next) => {
     let params = getParams(req),
         errors = validateRequire (params, [
-            {key: 'tag_id', max_length: 10, min_length: 1},
             {key: 'title', max_length: 50, min_length: 1}, 
             {key: 'genere', max_length: 50, min_length: 1},
             {key: 'is_premium', max_length: 1, min_length: 1},

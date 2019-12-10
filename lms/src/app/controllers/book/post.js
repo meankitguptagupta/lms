@@ -1,21 +1,16 @@
 const addBook = require ('../../repositories/book/create'),
     checkTagIdExists = require ('../../repositories/book/checkTagIdExists'),
-    getParams = require ('../../helpers/getParams');
+    getParams = require ('../../helpers/getParams'),
+    filterObj = require ('../../helpers/filterObj');
 
 module.exports = (req, res) => {
-    let params = getParams(req),
-        book = {
-            tag_id: params.tag_id,
-            title: params.title,
-            genere: params.genere,
-            is_premium: parseInt (params.is_premium),
-            academy_type: params.academy_type,
-            academy_standard: parseInt (params.academy_standard),
-            fields: params.fields || null,
-        }
+    let book = filterObj (filterParams (getParams(req), [
+        'tag_id', 'title', 'genere', 'is_premium',
+        'academy_type', 'academy_standard', 'fields'
+    ]));
 
     // check of tag-id exists
-    checkTagIdExists (params.tag_id, (err, result, fields) => {
+    checkTagIdExists (book.tag_id, (err, result, fields) => {
         // check if db error exists
         if (err) 
             return res.send (500, {status: false, message: 'Database Error', data: {error: 'Internal server Error'}}) ;
@@ -30,7 +25,7 @@ module.exports = (req, res) => {
                 return res.send (500, {status: false, message: 'Database Error', data: {error: 'Internal server Error'}}) ;
 
             // return success
-            return res.send (200, {status: true, message: 'Book successfully saved!', data: {book_id: result.insertId}});
+            return res.send (201, {status: true, message: 'Book successfully saved!', data: {book_id: result.insertId}});
         });
     });    
 }
