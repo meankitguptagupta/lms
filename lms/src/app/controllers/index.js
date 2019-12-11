@@ -5,6 +5,7 @@ module.exports = {
     user: {
         profile: require ('./user/profile'),
         update: require ('./user/update'),
+        list: require ('./user/list')
     },
     books: {
         add: require ('./book/post'),
@@ -12,6 +13,8 @@ module.exports = {
         update: require ('./book/update')
     },
     student: {
-        patch: require ('./student/patch')
+        patch: require ('./student/patch'),
+        view: require ('./student/view'),
+        update: require ('./student/update')
     }
 }

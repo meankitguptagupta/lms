@@ -24,3 +24,7 @@ services:
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=root
     tty: true
+  adminer:
+    image: adminer
+    ports:
+      - 3001:3001

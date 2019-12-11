@@ -8,5 +8,8 @@ module.exports = {
     },
     user: {
         update: require ('./user/update')
+    },
+    student: {
+        update: require ('./student/update')
     }
 }
