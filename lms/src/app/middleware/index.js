@@ -11,5 +11,9 @@ module.exports = {
     },
     student: {
         update: require ('./student/update')
+    },
+    register: {
+        post: require ('./register/post'),
+        validateDate: require ('./register/validate-date'),
     }
 }

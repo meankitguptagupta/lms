@@ -1,7 +1,8 @@
 const addBook = require ('../../repositories/book/create'),
     checkTagIdExists = require ('../../repositories/book/checkTagIdExists'),
     getParams = require ('../../helpers/getParams'),
-    filterObj = require ('../../helpers/filterObj');
+    filterObj = require ('../../helpers/filterObj'),
+    filterParams = require ('../../helpers/filterParams');
 
 module.exports = (req, res) => {
     let book = filterObj (filterParams (getParams(req), [

@@ -22,4 +22,7 @@ module.exports = (server, passport) => {
     server.patch ('/students/:user_id', passport.authenticate('jwt', {session: false}), middleware.allowRole (['admin']), controllers.student.patch);
 
     server.get ('/users', passport.authenticate('jwt', {session: false}), middleware.allowRole (['admin']), controllers.user.list);
+
+    server.post ('/registers', passport.authenticate ('jwt', {session: false}), middleware.allowRole(['admin']), middleware.register.post, middleware.register.validateDate, controllers.register.post);
+    server.put ('/registers', passport.authenticate ('jwt', {session: false}), middleware.allowRole(['admin']), middleware.register.post, controllers.register.returnBook);
 }

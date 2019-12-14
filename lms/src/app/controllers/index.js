@@ -16,5 +16,9 @@ module.exports = {
         patch: require ('./student/patch'),
         view: require ('./student/view'),
         update: require ('./student/update')
+    },
+    register: {
+        post: require ('./register/post.js'),
+        returnBook: require ('./register/return-book.js')
     }
 }
