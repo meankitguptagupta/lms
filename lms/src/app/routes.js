@@ -23,6 +23,7 @@ module.exports = (server, passport) => {
 
     server.get ('/users', passport.authenticate('jwt', {session: false}), middleware.allowRole (['admin']), controllers.user.list);
 
-    server.post ('/registers', passport.authenticate ('jwt', {session: false}), middleware.allowRole(['admin']), middleware.register.post, middleware.register.validateDate, controllers.register.post);
-    server.put ('/registers', passport.authenticate ('jwt', {session: false}), middleware.allowRole(['admin']), middleware.register.post, controllers.register.returnBook);
+    server.post ('/register', passport.authenticate ('jwt', {session: false}), middleware.allowRole(['admin']), middleware.register.post, middleware.register.validateDate, controllers.register.post);
+    server.put ('/register', passport.authenticate ('jwt', {session: false}), middleware.allowRole(['admin']), middleware.register.post, controllers.register.returnBook);
+    server.get ('/register', passport.authenticate ('jwt', {session: false}), middleware.allowRole(['admin']), controllers.register.list);
 }
