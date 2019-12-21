@@ -20,7 +20,7 @@ services:
       - ./mysql/docker-data-path-host/mysql:/var/lib/mysql
       - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     environment:
-      - MYSQL_DATABASE=lms
+      - MYSQL_DATABASE=lms_test
       - MYSQL_USER=development
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=root

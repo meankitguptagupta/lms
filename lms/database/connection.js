@@ -3,7 +3,7 @@ const mysql = require('mysql'),
         host : 'mysql',
         user : 'development',
         password : 'password',
-        database: 'lms',
+        database: 'lms_test',
         port: '3306',
         connectTimeout: 1000
     });
