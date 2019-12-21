@@ -19,6 +19,7 @@ module.exports = {
     },
     register: {
         post: require ('./register/post.js'),
-        returnBook: require ('./register/return-book.js')
+        returnBook: require ('./register/return-book.js'),
+        list: require ('./register/list.js'),
     }
 }

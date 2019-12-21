@@ -8,8 +8,8 @@
  * @return int
  */
 module.exports = (date_compare_with, date_compared = null, response_unit = 'day') => {
-    date_compared = (new Date (date_compared)) || (new Date);
-    date_compare_with = new Date (date_compare_with);
+    date_compared = date_compared ? new Date(date_compared) : new Date();
+    date_compare_with = new Date(date_compare_with);
     let diff = date_compare_with.getTime() - date_compared.getTime();
 
     switch (response_unit.toLowerCase()) {

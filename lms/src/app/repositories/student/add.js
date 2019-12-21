@@ -10,7 +10,7 @@ const connection = require('../../../../database/connection');
  */
 module.exports = (user_id, cbAdd) => {
     connection.query ({
-        sql: "INSERT INTO `users` SET ?",
+        sql: "INSERT INTO `students` SET ?",
         values: {user_id: user_id}
     }, cbAdd);
 }

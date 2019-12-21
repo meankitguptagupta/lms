@@ -20,6 +20,12 @@ module.exports = (req, res) => {
             return res.send (422, {status: false, message: 'Invalid  password', data: {password: 'Invalid password!'}});
 
         // send success
-        return res.send (200, {status: true, message: 'Login successful', data: jsonToken.generateToken ({user_id: result[0].id}) });
+        return res.send (200, {status: true, message: 'Login successful', data:{
+            type: 'JWT',
+            token: jsonToken.generateToken ({
+                user_id: result[0].id,
+                role: result[0].role,
+            })
+        }});
     });
 }

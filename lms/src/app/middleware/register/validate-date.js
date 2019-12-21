@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
 
     // velidate academy_standard
     if (!Object.keys(errors).length && !validateDate (params.proposed_return_date))
-        errors['proposed_return_date'] = 'Invalid Proposed-Return-Date!';
+        errors['proposed_return_date'] = 'Proposed-Return-Date must be in YYYY-MM-DD format!';
 
     if (!Object.keys(errors).length && dateDiff (params.proposed_return_date) < MIMIMUM_POSSIBLE_RETURN_DAYS)
         errors['proposed_return_date'] = `Proposed-Return-Date can not be less than ${MIMIMUM_POSSIBLE_RETURN_DAYS} date-of-issue.`;

@@ -3,7 +3,10 @@ const addUserProfile = require ('../repositories/user/addUserProfile'),
     setRoleAndStatusOfUser = require ('../repositories/user/setRoleAndStatusOfUser'),
     addStudent = require ('../repositories/student/add');
 
-    
+/**
+ * @param object user
+ *  { user_id: INT, first_name: STRING, last_name: STRING, contact_number: STRING }
+ */
 module.exports = (user) => {
     // save user detail into `user_profile`
     addUserProfile (user);

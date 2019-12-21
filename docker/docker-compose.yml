@@ -10,6 +10,7 @@ services:
       - 3000:3000
     tty: true
     restart: always
+
   mysql:
     image: mysql:5.7
     container_name: mysql-lms
@@ -24,9 +25,20 @@ services:
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=root
     tty: true
+    
   adminer:
     image: adminer
     container_name: adminer-lms
     restart: always
     ports:
       - 8080:8080
+
+  # lmsfront:
+  #   image: lms_front
+  #   container_name: lms-web-front
+  #   restart: always
+  #   ports: 
+  #     - 4200:4200
+  #   volumes:
+  #     - ../angular:/home/lms
+  #   tty: true
