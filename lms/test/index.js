@@ -3,7 +3,7 @@ const chai = require ('chai'),
     chaiHttp = require ('chai-http'),
     should = chai.should(),
     connection = require ('../database/connection'),
-    cases = require ('./Automated-testing/index');
+    cases = require ('./Integration Testing/index');
 
 chai.use(chaiHttp);
 
@@ -20,7 +20,11 @@ describe('Init', () => {
     })
 
     // Test home route
-    describe('/', () => {
-        cases.home();
-    });
+    describe('/', () => { cases.home(); });
+
+    // test Signup as Admin
+    describe('/signup', () => cases.signup());
+
+    // test Login as Admin
+    describe('/login', () => { cases.login(); });
 });
