@@ -14,3 +14,5 @@ require ('./app/routes') (server, passport);
 server.listen(port, () => {
     console.info (`Server is running on port ${port}`);
 });
+
+module.exports = server;
