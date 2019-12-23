@@ -1,5 +1,6 @@
 const server = require ('../../src/server'),
-    chai = require ('chai');
+    chai = require ('chai'),
+    faker = require ('faker');
 
 // Test case for Signup API
 module.exports = (token) => {

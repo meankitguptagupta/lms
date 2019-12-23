@@ -31,7 +31,10 @@ describe('Init', () => {
             token = token.type + ' ' + token.token;
             
             // check for profile
-            describe('/profile', () => cases.profile())
+            describe('/profile', () => cases.profile(token));
+
+            // update profile
+            describe('/update-profile', () => cases.profile_put(token));
         }));
     }));
 });
