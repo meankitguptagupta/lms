@@ -27,9 +27,11 @@ describe('Init', () => {
     describe('/signup', () => cases.signup().then(user => {
         // login as Admin
         describe('/login', () => cases.login(user).then (token => {
+            // admin Token
             token = token.type + ' ' + token.token;
             
-            
+            // check for profile
+            describe('/profile', () => cases.profile())
         }));
     }));
 });

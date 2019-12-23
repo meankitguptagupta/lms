@@ -1,3 +1,3 @@
 module.exports = (req, res) => {
-    return res.send (500, {status: false, message: 'Database Error', data: req.user});
+    return res.send (200, {status: false, message: 'User Detail', data: req.user});
 }
