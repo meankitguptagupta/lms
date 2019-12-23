@@ -15,7 +15,7 @@ services:
     image: mysql:5.7
     container_name: mysql-lms
     ports:
-      - 3306:3306
+      - 33060:3306
     volumes:
       - ./mysql/docker-data-path-host/mysql:/var/lib/mysql
       - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
@@ -31,7 +31,7 @@ services:
     container_name: adminer-lms
     restart: always
     ports:
-      - 8080:8080
+      - 8081:8080
 
   # lmsfront:
   #   image: lms_front
