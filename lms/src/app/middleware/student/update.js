@@ -1,6 +1,7 @@
 const getParams = require ('../../helpers/getParams'),
     validateRequire = require ('../../Validations/require'),
-    validateContactNumber = require ('../../Validations/validateContactNumber');
+    validateContactNumber = require ('../../Validations/validateContactNumber'),
+    academy_type = require ('../../enum/academic_type');
 
 module.exports = (req, res, next) => {
 
@@ -12,13 +13,17 @@ module.exports = (req, res, next) => {
             {key: 'academy_address', max_length: 191, min_length: 1},
             {key: 'academy_city', max_length: 50, min_length: 1},
             {key: 'academy_pincode', max_length: 8, min_length: 1},
-            {key: 'academy_type', max_length: 10, min_length: 1},
+            {key: 'academy_type', max_length: 50, min_length: 1},
             {key: 'academy_standard', max_length: 2, min_length: 1},
         ]);
 
     // velidate academy_standard
     if (!Object.keys(errors).length && !validateContactNumber (params.guardian_contact_number))
         errors['guardian_contact_number'] = 'Invalid Contact Number of Guardian!';
+
+    // velidate academy_type
+    if (!Object.keys(errors).length && !academy_type.includes ((params.academy_type).toLowerCase()))
+        errors['academy_type'] = 'academy-type must be one from: ' + academy_type.join(', ');
 
     if (Object.keys(errors).length)
         return res.send (422, {status: false, message: 'Parameters Errors!', data: errors});
