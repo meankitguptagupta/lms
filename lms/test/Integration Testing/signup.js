@@ -73,7 +73,7 @@ module.exports = () => {
                 res.body.should.have.property('message').eql('User successfully registered!');
                 res.body.should.have.property('data');
                 res.body.data.should.have.property('user_id');
-                resolve (user);
+                resolve ({user: user, id: res.body.data.user_id});
                 done();
             });
         });

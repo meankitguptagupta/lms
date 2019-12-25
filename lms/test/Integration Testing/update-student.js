@@ -14,7 +14,7 @@ const server = require ('../../src/server'),
     };
 
 // Test case for Signup API
-module.exports = (token) => {
+module.exports = (token, a_token) => {
     
     // no Auth-Token
     it('Update Student Without Token!', (done) => {
@@ -28,6 +28,20 @@ module.exports = (token) => {
         });
     });
 
+    // with admin token
+    it('Update Student with Admin-Token.', (done) => {
+        chai.request(server)
+        .put('/students')
+        .set('Authorization', a_token)
+        .end((err, res) => {
+            res.should.have.status(403);
+            res.body.should.be.a('object');
+            res.body.should.have.property('message').eql('Invalid access');
+            res.body.should.have.property('data');
+            res.body.data.should.have.property('role').eql('You are not authorize to access this service');
+            done();
+        });
+    });
     
     // return with errors
     it('Update Student with Token but without Payload.', (done) => {

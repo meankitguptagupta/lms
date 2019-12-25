@@ -2,12 +2,12 @@ const server = require ('../../src/server'),
     chai = require ('chai');
 
 // Test case for Signup API
-module.exports = (token, a_token) => {
+module.exports = (token, student_id) => {
     
     // no Auth-Token
-    it('Get Student Without Token!', (done) => {
+    it('View Student by ID Without Admin-Token!', (done) => {
         chai.request(server)
-        .get('/students')
+        .get('/students/'+student_id)
         .end((err, res) => {
             res.should.have.status(401);
             res.text.should.be.a('string');
@@ -16,25 +16,10 @@ module.exports = (token, a_token) => {
         });
     });
 
-    // with admin token
-    it('Get Student with Admin-Token.', (done) => {
-        chai.request(server)
-        .get('/students')
-        .set('Authorization', a_token)
-        .end((err, res) => {
-            res.should.have.status(403);
-            res.body.should.be.a('object');
-            res.body.should.have.property('message').eql('Invalid access');
-            res.body.should.have.property('data');
-            res.body.data.should.have.property('role').eql('You are not authorize to access this service');
-            done();
-        });
-    });
-
     // return with success
-    it('Get Student with Token.', (done) => {
+    it('View Student by ID With Admin-Token!', (done) => {
         chai.request(server)
-        .get('/students')
+        .get('/students/'+student_id)
         .set('Authorization', token)
         .end((err, res) => {
             res.should.have.status(200);
