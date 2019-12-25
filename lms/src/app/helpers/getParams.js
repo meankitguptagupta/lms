@@ -11,10 +11,10 @@ module.exports = (req) => {
     switch ((req.method).toString().toUpperCase()) {
         case 'POST':
         case 'PUT':
-            req.body ? Object.keys(req.body).map(key => { fields[key] = req.body[key].trim()} ) : {};
+            req.body ? Object.keys(req.body).map(key => { fields[key] = (typeof req.body[key] === 'string') ? req.body[key].trim() : req.body[key] }) : {};
             return fields;
         case 'GET':
-            req.params ? Object.keys(req.params).map(key => { fields[key] = req.params[key].trim()} ) : {};
+            req.params ? Object.keys(req.params).map(key => { fields[key] = (typeof req.body[key] === 'string') ? req.params[key].trim() : req.params[key] }) : {};
             return fields;
     }
 
