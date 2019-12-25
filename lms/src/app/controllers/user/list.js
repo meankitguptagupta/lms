@@ -8,6 +8,6 @@ module.exports = (req, res) => {
             return res.send (500, {status: false, message: 'Database Error', data: {error: 'Internal server Error'}}) ;
 
         // send success
-        return res.send (200, {status: true, message: 'User successfully updated!', data: result });
+        return res.send (200, {status: true, message: 'User successfully updated!', data: {users: result} });
     })
 }
