@@ -33,12 +33,12 @@ services:
     ports:
       - 8080:8080
 
-  # lmsfront:
-  #   image: lms_front
-  #   container_name: lms-web-front
-  #   restart: always
-  #   ports: 
-  #     - 4200:4200
-  #   volumes:
-  #     - ../angular:/home/lms
-  #   tty: true
+  lmsfront:
+    image: lms_angular
+    container_name: lms-web-angular
+    restart: always
+    ports: 
+      - 4200:4200
+    volumes:
+      - ../front/angular:/home/angular
+    tty: true
