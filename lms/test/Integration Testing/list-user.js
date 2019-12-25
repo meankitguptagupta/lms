@@ -37,10 +37,7 @@ module.exports = (a_token, s_token, student_id, book_id) => {
             res.body.should.be.a('object');
             res.body.should.have.property('message').eql('User successfully updated!');
             res.body.should.have.property('data');
-            console.log (res.body);
-            // res.body.data.should.have.property('book_id').eql(book_id);
-            // res.body.data.should.have.property('user_id').eql(student_id);
-            // res.body.data.should.have.property('proposed_return_date').eql(proposed_return_date);
+            res.body.data.should.have.property('users').be.a('array');
             done();
         });
     });
