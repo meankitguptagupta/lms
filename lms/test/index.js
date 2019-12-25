@@ -54,7 +54,10 @@ describe('Init', () => {
                         s_token = s_token.type + ' ' + s_token.token;
 
                         // update student
-                        describe('/update-student', () => cases.updateStudent(s_token));
+                        describe('/update-student', () => cases.updateStudent(s_token, token));
+
+                        // get student
+                        describe('/get-student', () => cases.getStudent(s_token, token));
                     }));
                 }));
             }));            

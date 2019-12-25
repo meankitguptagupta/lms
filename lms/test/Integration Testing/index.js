@@ -7,5 +7,6 @@ module.exports = {
     addBook: require('./add-book'),
     updateBook: require('./update-book'),
     listBook: require('./list-book'),
-    updateStudent: require('./update-student')
+    updateStudent: require('./update-student'),
+    getStudent: require('./get-student'),
 }
