@@ -35,6 +35,10 @@ describe('Init', () => {
 
             // update profile
             describe('/update-profile', () => cases.profile_put(token));
+
+            // add book
+            describe('/add new book', () => cases.addBook(token));
+            
         }));
     }));
 });

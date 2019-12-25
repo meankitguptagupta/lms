@@ -3,5 +3,6 @@ module.exports = {
     signup: require ('./signup'),
     login: require ('./login'),
     profile: require ('./profile'),
-    profile_put:require('./profile_put')
+    profile_put:require('./profile_put'),
+    addBook: require('./add-book')
 }

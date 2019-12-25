@@ -4,11 +4,19 @@ const server = require ('../../src/server'),
 
 // Test case for Signup API
 module.exports = (token) => {
+    const profile = {
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
+        contact_number: (faker.phone.phoneNumberFormat()).replace (/[^\d]/g, ''),
+        address: faker.address.streetName() + faker.address.streetAddress(),
+        city: faker.address.city(),
+        pincode: (faker.address.zipCode()).substr(0,8)
+    };
 
-    // no Auth-Token
-    it('Get Profile of the User. Without Token!', (done) => {
+    // without Token
+    it('Update Profile of the User. Without Token!', (done) => {
         chai.request(server)
-        .get('/profile')
+        .put('/profile')
         .end((err, res) => {
             res.should.have.status(401);
             res.text.should.be.a('string');
@@ -17,27 +25,30 @@ module.exports = (token) => {
         });
     });
 
-    // return with success
-    it('Get Profile of the User. With Token!', (done) => {
+    // without Payload
+    it('Update Profile of the User. Without payload!', (done) => {
         chai.request(server)
-        .get('/profile')
+        .put('/profile')
         .set('Authorization', token)
         .end((err, res) => {
-            res.should.have.status(200);
+            res.should.have.status(422);
             res.body.should.be.a('object');
-            res.body.should.have.property('message').eql('User Detail');
+            done();
+        });
+    });
+
+    // return with success
+    it('Update Profile of the User. With Token and Payload!', (done) => {
+        chai.request(server)
+        .put('/profile')
+        .set('Authorization', token)
+        .send(profile)
+        .end((err, res) => {
+            res.body.should.be.a('object');
+            res.body.should.have.property('message').eql('User successfully updated!');
             res.body.should.have.property('data');
-            res.body.data.should.have.property('id');
-            res.body.data.should.have.property('email');
-            res.body.data.should.have.property('role');
-            res.body.data.should.have.property('status');
-            res.body.data.should.have.property('created_at');
-            res.body.data.should.have.property('first_name');
-            res.body.data.should.have.property('last_name');
-            res.body.data.should.have.property('contact_number');
-            res.body.data.should.have.property('address');
-            res.body.data.should.have.property('city');
-            res.body.data.should.have.property('pincode');
+            res.body.data.should.have.property('user_id');
+            res.should.have.status(200);
             done();
         });     
     });
