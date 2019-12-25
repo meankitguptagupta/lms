@@ -17,9 +17,9 @@ const server = require ('../../src/server'),
 module.exports = (token) => {
     
     // no Auth-Token
-    it('Add new book. Without Token!', (done) => {
+    it('List books. Without Token!', (done) => {
         chai.request(server)
-        .post('/books')
+        .get('/books')
         .end((err, res) => {
             res.should.have.status(401);
             res.text.should.be.a('string');
@@ -28,38 +28,19 @@ module.exports = (token) => {
         });
     });
 
-    // return with error on tag-id
-    it('Add New Book withot payload but with Token for tag-only.', (done) => {
+    
+    // return with success
+    it('List Books with Token.', (done) => {
         chai.request(server)
-        .post('/books')
+        .get('/books')
         .set('Authorization', token)
+        .send(book)
         .end((err, res) => {
-            res.should.have.status(422);
+            res.should.have.status(200);
             res.body.should.be.a('object');
-            res.body.should.have.property('message').eql('Parameters Errors!');
+            res.body.should.have.property('message').eql('Books');
             res.body.should.have.property('data');
-            res.body.data.should.have.property('tag_id').eql('tag_id require');
             done();
         });     
     });
-
-    // return with success
-    return new Promise(resolve => {
-        // return with success
-        it('Add New Book with payload and with Token.', (done) => {
-            chai.request(server)
-            .post('/books')
-            .set('Authorization', token)
-            .send(book)
-            .end((err, res) => {
-                res.should.have.status(201);
-                res.body.should.be.a('object');
-                res.body.should.have.property('message').eql('Book successfully saved!');
-                res.body.should.have.property('data');
-                res.body.data.should.have.property('book_id');
-                resolve(res.body.data.book_id);
-                done();
-            });     
-        });
-    })
 }

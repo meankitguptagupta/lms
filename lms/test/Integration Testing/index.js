@@ -4,5 +4,8 @@ module.exports = {
     login: require ('./login'),
     profile: require ('./profile'),
     profile_put:require('./profile_put'),
-    addBook: require('./add-book')
+    addBook: require('./add-book'),
+    updateBook: require('./update-book'),
+    listBook: require('./list-book'),
+    updateStudent: require('./update-student')
 }

@@ -14,12 +14,12 @@ const server = require ('../../src/server'),
     };
 
 // Test case for Signup API
-module.exports = (token) => {
+module.exports = (token, book_id) => {
     
     // no Auth-Token
-    it('Add new book. Without Token!', (done) => {
+    it('Update book. Without Token!', (done) => {
         chai.request(server)
-        .post('/books')
+        .put('/books/'+book_id)
         .end((err, res) => {
             res.should.have.status(401);
             res.text.should.be.a('string');
@@ -29,37 +29,39 @@ module.exports = (token) => {
     });
 
     // return with error on tag-id
-    it('Add New Book withot payload but with Token for tag-only.', (done) => {
+    it('Update Book withot payload but with Token for tag-only.', (done) => {
         chai.request(server)
-        .post('/books')
+        .put('/books/'+book_id)
         .set('Authorization', token)
         .end((err, res) => {
             res.should.have.status(422);
             res.body.should.be.a('object');
             res.body.should.have.property('message').eql('Parameters Errors!');
             res.body.should.have.property('data');
-            res.body.data.should.have.property('tag_id').eql('tag_id require');
+            res.body.data.should.have.property('title');
+            res.body.data.should.have.property('genere');
+            res.body.data.should.have.property('is_premium');
+            res.body.data.should.have.property('academy_type');
+            res.body.data.should.have.property('academy_standard');
+            res.body.data.should.have.property('fields');
             done();
         });     
     });
 
+    
     // return with success
-    return new Promise(resolve => {
-        // return with success
-        it('Add New Book with payload and with Token.', (done) => {
-            chai.request(server)
-            .post('/books')
-            .set('Authorization', token)
-            .send(book)
-            .end((err, res) => {
-                res.should.have.status(201);
-                res.body.should.be.a('object');
-                res.body.should.have.property('message').eql('Book successfully saved!');
-                res.body.should.have.property('data');
-                res.body.data.should.have.property('book_id');
-                resolve(res.body.data.book_id);
-                done();
-            });     
-        });
-    })
+    it('Update Book with payload and with Token.', (done) => {
+        chai.request(server)
+        .put('/books/'+book_id)
+        .set('Authorization', token)
+        .send(book)
+        .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a('object');
+            res.body.should.have.property('message').eql('Book successfully update!');
+            res.body.should.have.property('data');
+            res.body.data.should.have.property('book_id');
+            done();
+        });     
+    });
 }
