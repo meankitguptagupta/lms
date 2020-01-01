@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormFields } from '../../../../models/form-fields';
 import { Validators } from '@angular/forms';
+import { ForgotPassword } from 'src/app/models/forms/forgot-password';
+import { FormFields } from 'src/app/models/form-fields';
 
 @Component({
   selector: 'app-forgot-password',
@@ -19,7 +20,8 @@ export class ForgotPasswordComponent implements OnInit {
     required: true,
     placeholder: 'Username/Email',
     maxLength: 191,
-    validators: [Validators.required, Validators.email, Validators.maxLength(191)]
+    validators: [Validators.required, Validators.email, Validators.maxLength(191)],
+    faIcon:'fa-envelope'
   }, {
     type: 'button',
     label: 'Send Request',
@@ -35,7 +37,7 @@ export class ForgotPasswordComponent implements OnInit {
     return this.fields;
   }
 
-  submit(form) {
+  submit(form:ForgotPassword) {
     this.spinnerStatus = true;
     console.log(form)
   }
