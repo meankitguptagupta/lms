@@ -1,0 +1,4 @@
+<div class="form-group" [ngSwitch]="field.type">
+    <app-input-text *ngSwitchCase="'text'" [field]="field" [form]="form"></app-input-text>
+    <app-button *ngSwitchCase="'button'" [field]="field" [form]="form" [spinnerStatus]="spinnerStatus" (submit)="submitForm($event)"></app-button>
+</div>

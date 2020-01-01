@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowErrorsComponent } from './show-errors.component';
+import { InputPasswordComponent } from './input-password.component';
 
-describe('ShowErrorsComponent', () => {
-  let component: ShowErrorsComponent;
-  let fixture: ComponentFixture<ShowErrorsComponent>;
+describe('InputPasswordComponent', () => {
+  let component: InputPasswordComponent;
+  let fixture: ComponentFixture<InputPasswordComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShowErrorsComponent ]
+      declarations: [ InputPasswordComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShowErrorsComponent);
+    fixture = TestBed.createComponent(InputPasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
