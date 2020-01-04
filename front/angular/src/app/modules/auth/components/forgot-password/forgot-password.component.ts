@@ -17,7 +17,9 @@ export class ForgotPasswordComponent implements OnInit {
   fields:FormFields[] = [{
     type: 'text',
     name: 'email',
-    required: true,
+    directives:{
+      required: true,
+    },
     placeholder: 'Username/Email',
     maxLength: 191,
     validators: [Validators.required, Validators.email, Validators.maxLength(191)],

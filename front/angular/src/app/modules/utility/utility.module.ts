@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShowErrorsComponent } from './components/show-errors/show-errors.component';
 import { NumberOnlyDirective } from './directives/number-only/number-only.directive';
@@ -28,9 +28,7 @@ import { RouterModule } from '@angular/router';
     CommonModule, RouterModule, ReactiveFormsModule
   ],
   exports: [
-    ShowErrorsComponent, NumberOnlyDirective,
-    TrimDirective, DynamicFormBuilderComponent
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    DynamicFormBuilderComponent
+  ]
 })
 export class UtilityModule { }

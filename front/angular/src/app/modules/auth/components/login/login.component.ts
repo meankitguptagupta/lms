@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormFields } from 'src/app/models/form-fields';
+import * as LoginDefination from 'src/app/forms-defination/login';
+import { Login } from 'src/app/models/forms/login';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +11,16 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   constructor() { }
-
-  loginForm:FormGroup;
+  
   spinnerStatus:boolean = false;
 
-  ngOnInit() {
-    this.loginForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.maxLength(191), Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.maxLength(191)]),
-    })
+  ngOnInit() { }
+
+  getFields():Array<FormFields> {
+    return LoginDefination.default;
   }
 
-  submitLogin(form) {
+  submit(form:Login) {
     this.spinnerStatus = true;
   }
 

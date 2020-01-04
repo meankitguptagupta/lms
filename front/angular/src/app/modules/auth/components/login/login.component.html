@@ -5,72 +5,11 @@
     </div>
     <div class="card-body">
         <!-- login form -->
-        <form [formGroup]="loginForm" novalidate>
-            <!-- username -->
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="fa fa-envelope"></i>
-                        </span>
-                    </div>
-                    <!-- username/Email field -->
-                    <input 
-                        class="form-control form-control-sm" 
-                        placeholder="Username/Email" appTrim
-                    formControlName="email" />
-                </div>
-                <app-show-errors [control]="loginForm.controls.email"></app-show-errors>
-            </div>
-
-            <!-- password -->
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="fa fa-lock"></i>
-                        </span>
-                    </div>
-                    <!-- Password field -->
-                    <input 
-                        type="password" 
-                        class="form-control form-control-sm" 
-                        placeholder="Password" appTrim
-                    formControlName="password" />
-                </div>
-                <app-show-errors [control]="loginForm.controls.password"></app-show-errors>
-            </div>
-
-            <!-- display forgot-password and submit -->
-            <div class="d-flex">
-                <div class="p-2">
-                    <!-- forgot password link -->
-                    <a 
-                        routerLink="/forgot-password" 
-                        class="text-info text-decoration-none">
-                        Forgot Password?
-                    </a>
-                </div>
-
-                <!-- login-form submit button -->
-                <div class="ml-auto">
-                    <button 
-                        type="button" 
-                        (click)="submitLogin(loginForm)"
-                        class="btn btn-sm text-capitalize btn-outline-primary"
-                        [ngClass]="this.disabled ? 'cursor-pointer' : 'cursor-disable'"
-                    [disabled]="!loginForm.valid || spinnerStatus">
-                        <span 
-                            *ngIf="spinnerStatus" 
-                            class="spinner-border spinner-border-sm" 
-                            role="status" 
-                            aria-hidden="true">
-                        </span>
-                        login
-                    </button>
-                </div>
-            </div>
-        </form>
+        <app-dynamic-form-builder 
+            [fields]="getFields()" 
+            (submit)="submit($event)" 
+            [spinnerStatus]="spinnerStatus">
+        </app-dynamic-form-builder>
 
         <div class="mt-5">
             <a routerLink="/signup" 

@@ -10,6 +10,8 @@ import { BookModule } from './modules/book/book.module';
 import { RegisterModule } from './modules/register/register.module';
 import { StudentModule } from './modules/student/student.module';
 import { UserModule } from './modules/user/user.module';
+import { HttpClientModule, HTTP_INTERCEPTORS }    from '@angular/common/http';
+import { ApiInterceptor } from './interceptors/ApiInterceptor';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,13 @@ import { UserModule } from './modules/user/user.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AuthModule, AdminModule, BookModule, 
     RegisterModule, StudentModule, UserModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
