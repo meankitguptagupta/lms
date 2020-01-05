@@ -3,7 +3,6 @@ import { Validators } from '@angular/forms';
 export default [{
     type: 'text',
     name: 'email',
-    value: 'admin@email.com',
     directives: {
       required: true
     },
@@ -14,7 +13,6 @@ export default [{
   }, {
     type: 'password',
     name: 'password',
-    value: '123456',
     directives: {
       required: true
     },
@@ -24,7 +22,6 @@ export default [{
   }, {
     type: 'text',
     name: 'first_name',
-    value: 'admin',
     directives: {
       required: true
     },
@@ -35,7 +32,6 @@ export default [{
   }, {
     type: 'text',
     name: 'last_name',
-    value: 'user',
     directives: {
       required: true
     },
@@ -46,7 +42,6 @@ export default [{
   }, {
     type: 'text',
     name: 'contact_number',
-    value: '9876543210',
     directives: {
       required: true,
       numberOnly:true
