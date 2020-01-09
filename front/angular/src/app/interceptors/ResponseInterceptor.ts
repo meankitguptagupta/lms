@@ -6,6 +6,7 @@ import { AuthService } from '../services/auth/auth.service';
 import { CommonService } from '../services/common/common.service';
 import { NotificationService } from '../services/notification/notification.service';
 import { NotificationMessage } from '../models/NotificationMessage';
+import { APIResponse } from '../models/api-response';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
@@ -15,7 +16,7 @@ export class ResponseInterceptor implements HttpInterceptor {
         private _notification:NotificationService
     ) {}
 
-    intercept (req: HttpRequest<any>, next: HttpHandler):Observable<HttpEvent<any>> {
+    intercept (req: HttpRequest<any>, next: HttpHandler):Observable<HttpEvent<APIResponse>> {
         let notification:NotificationMessage;
 
         return next.handle (req).pipe (tap((event:HttpEvent<any>) => {

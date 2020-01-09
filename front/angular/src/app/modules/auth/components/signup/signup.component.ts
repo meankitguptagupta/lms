@@ -4,6 +4,10 @@ import * as SignupDefination from 'src/app/forms-defination/signup';
 import { Signup } from 'src/app/models/forms/signup';
 import { UsersService } from 'src/app/services/users/users.service';
 import { APIResponse } from 'src/app/models/api-response';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { CommonService } from 'src/app/services/common/common.service';
+import { Token } from 'src/app/models/token';
+import { Login } from 'src/app/models/forms/login';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +16,11 @@ import { APIResponse } from 'src/app/models/api-response';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private _userService:UsersService) { }
+  constructor(
+    private _userService:UsersService, 
+    private _authService:AuthService,
+    private _commonService:CommonService
+  ) { }
   
   spinnerStatus:boolean = false;
 
@@ -28,18 +36,22 @@ export class SignupComponent implements OnInit {
     this.spinnerStatus = true;
 
     this._userService.signup(form).subscribe((res:APIResponse) => {
-      let credentials = {email: form.email, password: form.password};
       // login user after signup
-      this._userService.login(credentials).subscribe((res:APIResponse) => {
-        // save token response
-        console.log(res);
-        this.spinnerStatus = false;
-      }, err => {
-        // disable spinner to enable button on error
-        this.spinnerStatus = false;
-      })
+      this.login({email: form.email, password: form.password});
     }, (err:APIResponse) => {
       // disable spinner to enable button on error
+      this.spinnerStatus = false;
+    })
+  }
+
+  login(form:Login):void {
+    this._userService.login(form).subscribe((res:APIResponse) => {
+      // save login detail into session-storage
+      this._authService.store(res.data as Token).then((res:boolean) => {
+        // redirect to page
+        this._commonService.redirect(this._authService.getRole());
+      })
+    }, (err:APIResponse) => {
       this.spinnerStatus = false;
     })
   }
