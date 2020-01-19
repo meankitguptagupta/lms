@@ -1,0 +1,10 @@
+<form [formGroup]="form" (submit)="submit">
+    <div class="form-group" *ngFor="let f of fields">
+        <div [ngSwitch]="f.type">
+            <app-text *ngSwitchCase="'text'" [field]="f" [form]="form"></app-text>
+            <app-password *ngSwitchCase="'password'" [field]="f" [form]="form"></app-password>
+        </div>
+    </div>
+    
+    <button class="btn btn-success">Login</button>
+</form>

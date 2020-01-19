@@ -1,37 +1,37 @@
 version: '3.5'
 
 services:
-  web:
-    image: lms
-    container_name: lms-web
-    volumes:
-      - ../lms:/home/lms
-    ports:
-      - 3000:3000
-    tty: true
-    restart: always
+  # web:
+  #   image: lms
+  #   container_name: lms-web
+  #   volumes:
+  #     - ../lms:/home/lms
+  #   ports:
+  #     - 3000:3000
+  #   tty: true
+  #   restart: always
 
-  mysql:
-    image: mysql:5.7
-    container_name: mysql-lms
-    ports:
-      - 3306:3306
-    volumes:
-      - ./mysql/docker-data-path-host/mysql:/var/lib/mysql
-      - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-    environment:
-      - MYSQL_DATABASE=lms
-      - MYSQL_USER=development
-      - MYSQL_PASSWORD=password
-      - MYSQL_ROOT_PASSWORD=root
-    tty: true
+  # mysql:
+  #   image: mysql:5.7
+  #   container_name: mysql-lms
+  #   ports:
+  #     - 3306:3306
+  #   volumes:
+  #     - ./mysql/docker-data-path-host/mysql:/var/lib/mysql
+  #     - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+  #   environment:
+  #     - MYSQL_DATABASE=lms
+  #     - MYSQL_USER=development
+  #     - MYSQL_PASSWORD=password
+  #     - MYSQL_ROOT_PASSWORD=root
+  #   tty: true
     
-  adminer:
-    image: adminer
-    container_name: adminer-lms
-    restart: always
-    ports:
-      - 8080:8080
+  # adminer:
+  #   image: adminer
+  #   container_name: adminer-lms
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
 
   lmsfront:
     image: lms_angular

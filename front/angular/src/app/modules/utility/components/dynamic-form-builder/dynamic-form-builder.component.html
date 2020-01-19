@@ -1,5 +1,0 @@
-<form [formGroup]="form" novalidate (submit)="submitForm($event)">
-    <div class="form-group" *ngFor="let field of fields">
-        <app-form-builder [field]="field" [form]="form" [spinnerStatus]="spinnerStatus" (submit)="submitForm($event)"></app-form-builder>
-    </div>
-</form>

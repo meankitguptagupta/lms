@@ -1,21 +1,8 @@
-<div class="card w-25 mx-auto mt-5">
-    <!-- display logo -->
-    <div class="col d-none d-md-block my-4">
-        <div class="logo logo-img"></div>
-    </div>
-    <div class="card-body">
-        <!-- login form -->
-        <app-dynamic-form-builder 
-            [fields]="getFields()" 
-            (submit)="submit($event)" 
-            [spinnerStatus]="spinnerStatus">
-        </app-dynamic-form-builder>
-
-        <div class="mt-5">
-            <a routerLink="/signup" 
-                class="text-primary text-decoration-none">
-                Don't have a account? Signup.
-            </a>
+<div class="container d-flex h-100">
+    <div class="row align-self-center w-100">
+        <div class="col-sm-12 col-md-4 border rounded shadow mx-auto">
+            <div class="logo logo-img pt-5 m-5"></div>
+            <app-dynamic-form [fields]="getFields()"></app-dynamic-form>
         </div>
     </div>
 </div>

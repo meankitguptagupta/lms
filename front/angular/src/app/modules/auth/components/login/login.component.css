@@ -1,0 +1,9 @@
+.logo {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.logo-img {
+    background-image: url('src/assets/bootstrap-solid.svg');
+}
