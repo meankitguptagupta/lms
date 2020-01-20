@@ -9,10 +9,12 @@ import { ButtonComponent } from './components/dynamic-form/button/button.compone
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [ShowErrorsComponent, DynamicFormComponent, TextComponent, PasswordComponent, ButtonComponent],
   imports: [
-    CommonModule, ReactiveFormsModule
+    CommonModule, ReactiveFormsModule, RouterModule
   ],
   exports: [
     DynamicFormComponent

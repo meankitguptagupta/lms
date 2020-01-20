@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBase } from 'src/app/models/formBase';
 import { FormGroup, FormControl } from '@angular/forms';
+import { FormButton } from 'src/app/models/formButton';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -10,6 +11,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class DynamicFormComponent implements OnInit {
 
   @Input() fields:Array<FormBase>;
+  @Input() spinnerStatus:boolean;
+  @Input() button:FormButton;
+  @Output() formResponse:EventEmitter<any> = new EventEmitter();
 
   form:FormGroup;
 
@@ -26,7 +30,9 @@ export class DynamicFormComponent implements OnInit {
   }
 
   submit() {
-    
+    if(this.form.valid) {
+      this.formResponse.emit(this.form.value);
+    }
   }
 
 }
