@@ -1,10 +1,10 @@
 .progress-height {
-    height: 2px;
+    height: 3px;
 }
 
 .progress-bar.indeterminate {
     position: relative;
-    animation: progress-indeterminate 2s linear infinite;
+    animation: progress-indeterminate 1.5s linear infinite;
 }
   
 @keyframes progress-indeterminate {

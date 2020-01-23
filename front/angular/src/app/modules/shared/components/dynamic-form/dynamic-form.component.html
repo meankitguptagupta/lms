@@ -3,6 +3,7 @@
         <div [ngSwitch]="f.type">
             <app-text *ngSwitchCase="'text'" [field]="f" [form]="form"></app-text>
             <app-password *ngSwitchCase="'password'" [field]="f" [form]="form"></app-password>
+            <app-show-errors [control]="form.controls[f.name]"></app-show-errors>
         </div>
     </div>
     

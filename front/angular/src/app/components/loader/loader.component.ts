@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
   selector: 'app-loader',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoaderComponent implements OnInit {
 
-  constructor() { }
+  loading:boolean;
+
+  constructor(private _loader:LoaderService) { }
 
   ngOnInit() {
+    this._loader.status.subscribe((status:boolean) => {
+      this.loading = status;
+    })
   }
 
 }
