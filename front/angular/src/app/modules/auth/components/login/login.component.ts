@@ -4,6 +4,8 @@ import { LoginFields } from 'src/app/form-definitions/login-fields';
 import { LoginButton } from 'src/app/form-definitions/login-button';
 import { FormButton } from 'src/app/models/formButton';
 import { Login } from 'src/app/models/forms/login';
+import { UserService } from 'src/app/services/user/user.service';
+import { APIResponse } from 'src/app/models/forms/api-response';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ import { Login } from 'src/app/models/forms/login';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _user:UserService) { }
 
   ngOnInit() { }
 
@@ -26,7 +28,13 @@ export class LoginComponent implements OnInit {
     return LoginButton;
   }
 
-  submit(values:Login) {
-    console.log(values);
+  submit(values:Login):void {
+    this.spinnerStatus = true;
+    this._user.login(values).subscribe((res:APIResponse) => {
+      
+      this.spinnerStatus = false;
+    }, (err:APIResponse) => {
+      this.spinnerStatus = false;
+    })
   }
 }
