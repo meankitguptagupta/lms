@@ -9,11 +9,12 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { AuthRoutingModule } from './auth-routing.module';
 
 import { SharedModule } from '../shared/shared.module';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
     LoginComponent, SignupComponent, 
-    ResetPasswordComponent, ForgotPasswordComponent
+    ResetPasswordComponent, ForgotPasswordComponent, AuthComponent
   ],
   imports: [
     CommonModule, AuthRoutingModule, SharedModule

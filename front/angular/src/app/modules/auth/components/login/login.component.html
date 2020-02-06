@@ -1,12 +1,10 @@
-<div class="container d-flex h-100">
-    <div class="row align-self-center w-100">
-        <div class="col-sm-12 col-md-4 border rounded shadow mx-auto">
-            <div class="logo logo-img pt-5 m-5"></div>
-            <app-dynamic-form [fields]="getFields()" [spinnerStatus]="spinnerStatus" [button]="getButton()" (formResponse)="submit($event)"></app-dynamic-form>
+<app-dynamic-form 
+    [fields]="getFields()" 
+    [spinnerStatus]="spinnerStatus" 
+    [button]="getButton()" 
+    (formResponse)="submit($event)">
+</app-dynamic-form>
 
-            <div class="form-group ml-2">
-                <a routerLink="/auth/forgot-password" class="text-info text-decoration-none">Forgot-Password?</a>
-            </div>
-        </div>
-    </div>
+<div class="form-group ml-2 mt-5">
+    <a routerLink="/auth/signup" class="text-info text-decoration-none">Signup?</a>
 </div>

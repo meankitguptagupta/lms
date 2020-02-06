@@ -14,6 +14,6 @@ export class TextComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
 }

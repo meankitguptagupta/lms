@@ -1,7 +1,7 @@
 export const LoginButton = {
     anchor: {
-      label: 'signup',
-      href: 'signup'
+      label: 'Forget Password?',
+      href: '/auth/forgot-password'
     },
     button: {
       label: 'login'

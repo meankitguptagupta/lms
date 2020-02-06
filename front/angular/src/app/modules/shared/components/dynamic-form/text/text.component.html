@@ -4,5 +4,11 @@
             <i class="fa fa-{{ field.faIcon }}"></i>
         </div>
     </div>
-    <input class="form-control form-control-sm" [formControlName]="field.name" autocomplete="off" [placeholder]="field.placeholder" />
+    <input appTrim
+        class="form-control form-control-sm"
+        [formControlName]="field.name"
+        autocomplete="off"
+        appNumberOnly="{{ field?.directives?.appNumberOnly }}"
+        [placeholder]="field.placeholder" 
+    />
 </div>

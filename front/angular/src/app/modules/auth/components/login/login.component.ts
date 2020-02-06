@@ -6,6 +6,8 @@ import { FormButton } from 'src/app/models/formButton';
 import { Login } from 'src/app/models/forms/login';
 import { UserService } from 'src/app/services/user/user.service';
 import { APIResponse } from 'src/app/models/forms/api-response';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { UtilityService } from 'src/app/services/utility/utility.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,11 @@ import { APIResponse } from 'src/app/models/forms/api-response';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _user:UserService) { }
+  constructor(
+    private _user:UserService, 
+    private _auth:AuthService,
+    private _utility:UtilityService
+  ) { }
 
   ngOnInit() { }
 
@@ -31,8 +37,10 @@ export class LoginComponent implements OnInit {
   submit(values:Login):void {
     this.spinnerStatus = true;
     this._user.login(values).subscribe((res:APIResponse) => {
-      
-      this.spinnerStatus = false;
+      this._auth.store(res.data).then(() => {
+        // this._auth.getRole()
+        this._utility.redirect('dashboard');
+      });
     }, (err:APIResponse) => {
       this.spinnerStatus = false;
     })

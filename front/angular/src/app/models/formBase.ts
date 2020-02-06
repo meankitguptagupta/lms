@@ -6,5 +6,8 @@ export interface FormBase {
     name: string,
     placeholder: string,
     faIcon: string,
-    validators: Array<ValidatorFn>
+    validators: Array<ValidatorFn>,
+    directives?: {
+        appNumberOnly?:boolean
+    }
 }

@@ -10,9 +10,11 @@ import { ButtonComponent } from './components/dynamic-form/button/button.compone
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
+import { TrimDirective } from './directives/trim/trim.directive';
+import { NumberOnlyDirective } from './directives/number-only/number-only.directive';
 
 @NgModule({
-  declarations: [ShowErrorsComponent, DynamicFormComponent, TextComponent, PasswordComponent, ButtonComponent],
+  declarations: [ShowErrorsComponent, DynamicFormComponent, TextComponent, PasswordComponent, ButtonComponent, TrimDirective, NumberOnlyDirective],
   imports: [
     CommonModule, ReactiveFormsModule, RouterModule
   ],

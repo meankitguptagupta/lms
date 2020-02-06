@@ -19,4 +19,8 @@ export class NotificationComponent implements OnInit {
     })
   }
 
+  hideNotification():void {
+    this.notification = null;
+  }
+
 }

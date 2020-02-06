@@ -19,7 +19,8 @@ export class ShowErrorsComponent implements OnInit {
     'minlength': (params) => '##FIELD## should be minimum '+params.requiredLength+' characters',
     'maxlength': (params) => '##FIELD## should not be greater then '+params.requiredLength+' characters',
     'pattern': (params) => '##FIELD## should be a valid',
-    'email': (params) => "##FIELD## should be vaild email."
+    'email': (params) => "##FIELD## should be vaild email.",
+    'contact_number': (params) => "##FIELD## must be a number of 10 digits."
   };
 
   display():boolean {
@@ -27,7 +28,6 @@ export class ShowErrorsComponent implements OnInit {
   }
 
   getError(): string {
-    //console.log("show",this.control.errors);
     let errors = Object.keys(this.control.errors)
         .map(field => this.getMessage(field, this.control.errors[field],this.control)
       );
