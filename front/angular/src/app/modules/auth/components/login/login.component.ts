@@ -38,8 +38,7 @@ export class LoginComponent implements OnInit {
     this.spinnerStatus = true;
     this._user.login(values).subscribe((res:APIResponse) => {
       this._auth.store(res.data).then(() => {
-        // this._auth.getRole()
-        this._utility.redirect('dashboard');
+        this._utility.redirect(this._auth.getRole());
       });
     }, (err:APIResponse) => {
       this.spinnerStatus = false;

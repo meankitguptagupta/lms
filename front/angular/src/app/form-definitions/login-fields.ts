@@ -2,14 +2,14 @@ import { Validators } from '@angular/forms';
 
 export const LoginFields = [{
     type: 'text',
-    value: null,
+    value: 'admin@email.com',
     name: 'email',
     placeholder: 'Email',
     faIcon: 'envelope',
     validators: [Validators.required, Validators.email, Validators.maxLength(191)]
 }, {
     type: 'password',
-    value: null,
+    value: '123456',
     name: 'password',
     placeholder: 'Password',
     faIcon: 'lock',

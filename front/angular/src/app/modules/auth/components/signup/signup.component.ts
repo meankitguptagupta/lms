@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBase } from 'src/app/models/formBase';
 import { FormButton } from 'src/app/models/formButton';
 import { APIResponse } from 'src/app/models/forms/api-response';
@@ -11,17 +11,18 @@ import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  providers: [LoginComponent]
 })
-export class SignupComponent implements OnInit {
-
-  @ViewChild(LoginComponent, {static: false}) loginComp:LoginComponent;
+export class SignupComponent implements OnInit, AfterViewInit {
 
   spinnerStatus:boolean = false;
 
-  constructor(private _user:UserService) { }
+  constructor(private _user:UserService, private loginComp:LoginComponent) { }
 
   ngOnInit() {}
+
+  ngAfterViewInit() {}
 
   getFields():Array<FormBase> {
     return SignupFields;

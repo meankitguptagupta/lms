@@ -10,6 +10,7 @@ import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ResponseInterceptor } from './interceptors/response.interceptor';
+import { UserModule } from './modules/user/user.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ResponseInterceptor } from './interceptors/response.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule 
+    HttpClientModule,
+    UserModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true},
