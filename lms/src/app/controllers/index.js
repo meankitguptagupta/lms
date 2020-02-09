@@ -21,5 +21,8 @@ module.exports = {
         post: require ('./register/post.js'),
         returnBook: require ('./register/return-book.js'),
         list: require ('./register/list.js'),
-    }
+    },
+    genres: require('./public/genere'),
+    academic_types: require('./public/academy_types'),
+    roles: require('./public/roles')
 }
