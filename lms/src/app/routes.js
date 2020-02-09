@@ -26,4 +26,9 @@ module.exports = (server, passport) => {
     server.post ('/register', passport.authenticate ('jwt', {session: false}), middleware.allowRole(['admin']), middleware.register.post, middleware.register.validateDate, controllers.register.post);
     server.put ('/register', passport.authenticate ('jwt', {session: false}), middleware.allowRole(['admin']), middleware.register.post, controllers.register.returnBook);
     server.get ('/register', passport.authenticate ('jwt', {session: false}), middleware.allowRole(['admin']), controllers.register.list);
+
+    // these routes are publically accessible
+    server.get('/genere', controllers.genres),
+    server.get('/academy_types', controllers.academic_types),
+    server.get('/roles', controllers.roles)
 }
