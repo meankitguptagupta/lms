@@ -25,4 +25,10 @@ export class SidebarNavigationComponent implements OnInit {
     return this.getRoot() + '/' + url;
   }
 
+  toggleArrow(e):void {
+    e.preventDefault();
+    e.currentTarget.querySelector('i:last-child').classList.toggle('fa-angle-down')
+    e.currentTarget.querySelector('i:last-child').classList.toggle('fa-angle-up')
+  }
+
 }

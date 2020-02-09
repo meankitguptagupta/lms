@@ -18,10 +18,9 @@ const routes:Routes = [{
     }, {
         path: 'books',
         component: ListComponent,
-        children: [{
-            path: 'create',
+    }, {
+            path: 'books/create',
             component: CreateComponent
-        }]
     }]
 }]
 

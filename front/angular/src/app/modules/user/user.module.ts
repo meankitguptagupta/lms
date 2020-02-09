@@ -8,6 +8,7 @@ import { ListComponent } from './components/books/list/list.component';
 import { UserRoutingModule } from './user-routing.module';
 import { TopbarNavigationComponent } from './components/user/topbar-navigation/topbar-navigation.component';
 import { SidebarNavigationComponent } from './components/user/sidebar-navigation/sidebar-navigation.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SidebarNavigationComponent } from './components/user/sidebar-navigation
   ],
   imports: [
     CommonModule, 
-    UserRoutingModule
+    UserRoutingModule,
+    SharedModule
   ]
 })
 export class UserModule { }

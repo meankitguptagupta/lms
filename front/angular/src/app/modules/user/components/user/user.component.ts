@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
   /**
    * Toggle sidebar
    */
-  toggleSideBar(e:Event):void {
+  toggleSideBar(e):void {
     e.preventDefault();
     document.getElementById('wrapper').classList.toggle("toggled");
     e.currentTarget.querySelector('i').classList.toggle('fa-angle-double-left')
