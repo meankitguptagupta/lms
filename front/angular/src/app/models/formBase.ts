@@ -9,5 +9,6 @@ export interface FormBase {
     validators: Array<ValidatorFn>,
     directives?: {
         appNumberOnly?:boolean
-    }
+    },
+    options?:Array<string>
 }
