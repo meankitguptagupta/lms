@@ -1,5 +1,5 @@
 export interface FormButton {
-    anchor?: {
+    anchor: {
         label: string,
         href: string
     },

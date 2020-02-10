@@ -5,6 +5,7 @@ import { FormButton } from 'src/app/models/formButton';
 import { APIResponse } from 'src/app/models/forms/api-response';
 import { BookService } from 'src/app/services/books/book.service';
 import { tap } from 'rxjs/operators';
+import { Button } from 'src/app/form-definitions/button';
 
 @Component({
   selector: 'app-create',
@@ -44,16 +45,11 @@ export class CreateComponent implements OnInit {
   }
 
   getButton():FormButton {
-    return {
-      button: {
-        label: 'create'
-      }
-    };
+    return Button
   }
 
   submit(values):void {
-    this.spinnerStatus = true;
-    
+    this.spinnerStatus = true;    
   }
 
 }
