@@ -1,9 +1,0 @@
-<div class="h4 text-capitalize">{{ title }}</div>
-
-<!-- create book fields -->
-<app-dynamic-form 
-    [fields]="getFields()" 
-    [spinnerStatus]="spinnerStatus" 
-    [button]="getButton()" 
-    (formResponse)="submit($event)">
-</app-dynamic-form>
