@@ -15,7 +15,6 @@ WORKDIR /home/angular
 
 EXPOSE 4200
 
-COPY . .
+COPY ./angular .
 
-# start app
-# CMD ng serve --host 0.0.0.0
+RUN npm i
