@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.logo {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.logo-img {
+    background-image: url(./assets/imgs/bootstrap-solid.svg);
+}
