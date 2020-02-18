@@ -13,6 +13,7 @@ export class UserService {
   constructor(private _http:HttpClient) { }
 
   signup(user:Signup):Observable<APIResponse> {
+    console.log(user)
     return this._http.post<APIResponse>('signup', user);
   }
 

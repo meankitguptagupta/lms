@@ -30,8 +30,13 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  submit(values:Login):void {
+  submit():void {
+    this.login(this.loginForm.value);
+  }
+
+  login(values:Login):void {
     this.spinnerStatus = true;
+    
     this._user.login(values).subscribe((res:APIResponse) => {
       this._auth.store(res.data).then(() => {
         this._common.redirect(this._auth.getRole());

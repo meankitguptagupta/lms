@@ -9,8 +9,13 @@ const mysql = require('mysql'),
     });
  
 connection.connect(function(err) {
-  if (err) throw err;
-  console.log('connected as id ' + connection.threadId);
+  try {
+    if (err) throw err;
+    console.log('connected as id ' + connection.threadId);
+  } catch (err) {
+    // This will not catch the throw!
+    console.error(err);
+  }
 });
 
 module.exports = connection;

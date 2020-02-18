@@ -9,31 +9,35 @@ import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  providers: [LoginComponent]
 })
 export class SignupComponent implements OnInit {
 
-  loginComp:LoginComponent;
-
-  constructor(private _user:UserService) { }
+  constructor(private _user:UserService, private loginComp:LoginComponent) { }
 
   spinnerStatus:boolean = false;
   signupForm:FormGroup;
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(191)]),
-      password: new FormControl(null, [Validators.required, Validators.maxLength(191)]),
-      first_name: new FormControl(null, [Validators.required, Validators.maxLength(50)]),
-      last_name: new FormControl(null, [Validators.required, Validators.maxLength(50)]),
-      contact_number: new FormControl(null, [Validators.required, Validators.maxLength(10), Validators.pattern(/^[\d]{10}$/)]),
+      email: new FormControl('admin@email.com', [Validators.required, Validators.email, Validators.maxLength(191)]),
+      password: new FormControl('123456', [Validators.required, Validators.maxLength(191)]),
+      first_name: new FormControl('admin', [Validators.required, Validators.maxLength(50)]),
+      last_name: new FormControl('user', [Validators.required, Validators.maxLength(50)]),
+      contact_number: new FormControl('9876543210', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[\d]{10}$/)]),
     })
   }
 
-  submit(values:Signup):void {
+  submit():void {
+    this.signup(this.signupForm.value);    
+  }
+
+  private signup(values:Signup):void {
     this.spinnerStatus = true;
     this._user.signup(values).subscribe((res:APIResponse) => {
-      this.loginComp.submit({email: values.email, password: values.password});
+      this.loginComp.login({email: values.email, password: values.password});
+      this.spinnerStatus = false;
     }, (err:APIResponse) => {
       this.spinnerStatus = false;
     })
