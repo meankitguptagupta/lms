@@ -8,13 +8,9 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
-// guards
-import { NoAuthGuard } from 'src/app/guards/no-auth/no-auth.guard';
-
 const routes: Routes = [{
-    path: 'auth',
+    path: '',
     component: AuthComponent,
-    canActivate: [NoAuthGuard],
     children: [{
         path: '',
         component: LoginComponent
@@ -31,7 +27,7 @@ const routes: Routes = [{
 }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AuthRoutingModule { }
