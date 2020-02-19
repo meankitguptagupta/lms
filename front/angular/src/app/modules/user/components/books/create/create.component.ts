@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { CommonService } from 'src/app/services/common/common.service';
 
 @Component({
   selector: 'app-create',
@@ -8,14 +9,20 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
 })
 export class CreateComponent implements OnInit {
 
-  constructor(private _fb:FormBuilder) { }
+  constructor(private _fb:FormBuilder, private _common:CommonService) { }
 
   readonly title:string = 'create book';
 
   fields:FormArray;
   bookForm:FormGroup;
+  generes:Array<string> = [];
+  academyTypes:Array<string> = [];
 
   ngOnInit() {
+
+    this.getGeneres();
+    this.getAcademyTypes();
+
     this.bookForm = new FormGroup({
       tag_id: new FormControl(null, [Validators.required, Validators.maxLength(10)]),
       title: new FormControl(null, [Validators.required, Validators.maxLength(50)]),
@@ -27,6 +34,7 @@ export class CreateComponent implements OnInit {
     })
 
     this.fields = this.bookForm.get('fields') as FormArray;
+    this.fields.push(this.createItem());
   }
 
   addremoveFields(i):void {
@@ -46,6 +54,18 @@ export class CreateComponent implements OnInit {
       key: new FormControl(key, [Validators.required, Validators.maxLength(20)]),
       value: new FormControl(value, [Validators.required, Validators.maxLength(255)])
     });
+  }
+
+  getGeneres() {
+    this._common.generes().subscribe(res => {
+      this.generes = Object.values(res.data);
+    })
+  }
+
+  getAcademyTypes():void {
+    this._common.academyTypes().subscribe(res => {
+      this.academyTypes = Object.values(res.data);
+    })
   }
 
 }

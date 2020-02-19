@@ -52,7 +52,10 @@
                         </div>
                     </div>
                     <select class="form-control form-control-sm text-capitalize" formControlName="genere">
-                        <option class="text-capitalize">select genere</option>
+                        <option selected disabled class="text-capitalize">select genere</option>
+                        <option class="text-capitalize" *ngFor="let genere of generes">
+                            {{ genere }}
+                        </option>
                     </select>
                 </div>
                 <app-show-errors [control]="bookForm.controls.genere"></app-show-errors>
@@ -78,7 +81,10 @@
                         </div>
                     </div>
                     <select class="form-control form-control-sm text-capitalize" formControlName="academy_type">
-                        <option class="text-capitalize">select academy-type</option>
+                        <option selected disabled class="text-capitalize">select academy-type</option>
+                        <option class="text-capitalize" *ngFor="let academy of academyTypes">
+                            {{ academy }}
+                        </option>
                     </select>
                 </div>
                 <app-show-errors [control]="bookForm.controls.academy_type"></app-show-errors>
@@ -104,15 +110,16 @@
                 <app-show-errors [control]="bookForm.controls.academy_standard"></app-show-errors>
             </div>
         </div>
+
         <div class="col">
             <div formArrayName="fields"  *ngFor="let item of bookForm.get('fields')['controls']; let i = index;">  
                 <div [formGroupName]="i" class="form-group-name">
                     <div class="row p-2">
-                    <div class="col-5">
+                    <div class="col">
                         <input formControlName="key" placeholder="Key" appTrim class="form-control" autocomplete="off" maxlength="20"/>
                         <app-show-errors [control]="key"></app-show-errors>
                     </div>
-                    <div class="col-6">
+                    <div class="col">
                         <input formControlName="value" placeholder="value" appTrim class="form-control" autocomplete="off" maxlength="255"/>
                     </div>
                     <div class="col-1">
@@ -127,23 +134,15 @@
     </div>
 
     <!-- submit button -->
-    <div class="d-flex">
-        <div class="mr-auto">
-            <a class="text-capitalize text-info text-decoration-none"
-                routerLink="/auth">
-                login?
-            </a>
-        </div>
-        <div>
-            <button 
-                class="btn btn-outline-success btn-sm text-capitalize cursor-not-allowed" 
-                [disabled]="!bookForm.valid || spinnerStatus">
-                <span *ngIf="spinnerStatus" 
-                    class="spinner-border spinner-border-sm" 
-                    role="status" 
-                    aria-hidden="true"></span>
-                signup
-            </button>
-        </div>
+    <div class="d-flex flex-row-reverse">
+        <button 
+            class="btn btn-outline-success btn-sm text-capitalize cursor-not-allowed" 
+            [disabled]="!bookForm.valid || spinnerStatus">
+            <span *ngIf="spinnerStatus" 
+                class="spinner-border spinner-border-sm" 
+                role="status" 
+                aria-hidden="true"></span>
+            signup
+        </button>
     </div>
 </form>
