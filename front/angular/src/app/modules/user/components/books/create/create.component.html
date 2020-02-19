@@ -1,1 +1,149 @@
-<p>create works!</p>
+<div class="h4 text-capitalize">{{ title }}</div>
+
+<!-- form to create/update books -->
+<form class="p-2" [formGroup]="bookForm" (submit)="submit()">
+
+    <div class="row">
+        <div class="col">
+            <!-- Tag ID field -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                    </div>
+                    <input appTrim
+                        class="form-control form-control-sm"
+                        formControlName="tag_id"
+                        autocomplete="off"
+                        maxlength="10"
+                        placeholder="Tag ID"
+                    />
+                </div>
+                <app-show-errors [control]="bookForm.controls.tag_id"></app-show-errors>
+            </div>
+
+            <!-- Title field -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <input appTrim
+                        class="form-control form-control-sm"
+                        formControlName="title"
+                        autocomplete="off"
+                        maxlength="50"
+                        placeholder="Title"
+                    />
+                </div>
+                <app-show-errors [control]="bookForm.controls.title"></app-show-errors>
+            </div>
+
+            <!-- Genere field -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <select class="form-control form-control-sm text-capitalize" formControlName="genere">
+                        <option class="text-capitalize">select genere</option>
+                    </select>
+                </div>
+                <app-show-errors [control]="bookForm.controls.genere"></app-show-errors>
+            </div>
+
+            <!-- is_premium field -->
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="is_premium" formControlName="is_premium"/>
+                    <label class="form-check-label" for="is_premium">
+                        Is Primium?
+                    </label>
+                </div>
+                <app-show-errors [control]="bookForm.controls.is_premium"></app-show-errors>
+            </div>
+
+            <!-- academy_type field -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <select class="form-control form-control-sm text-capitalize" formControlName="academy_type">
+                        <option class="text-capitalize">select academy-type</option>
+                    </select>
+                </div>
+                <app-show-errors [control]="bookForm.controls.academy_type"></app-show-errors>
+            </div>
+
+            <!-- academy_standard field -->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <input appTrim
+                        class="form-control form-control-sm"
+                        formControlName="title"
+                        autocomplete="off"
+                        maxlength="2"
+                        appNumberOnly
+                        placeholder="academy_standard"
+                    />
+                </div>
+                <app-show-errors [control]="bookForm.controls.academy_standard"></app-show-errors>
+            </div>
+        </div>
+        <div class="col">
+            <div formArrayName="fields"  *ngFor="let item of bookForm.get('fields')['controls']; let i = index;">  
+                <div [formGroupName]="i" class="form-group-name">
+                    <div class="row p-2">
+                    <div class="col-5">
+                        <input formControlName="key" placeholder="Key" appTrim class="form-control" autocomplete="off" maxlength="20"/>
+                        <app-show-errors [control]="key"></app-show-errors>
+                    </div>
+                    <div class="col-6">
+                        <input formControlName="value" placeholder="value" appTrim class="form-control" autocomplete="off" maxlength="255"/>
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="btn btn-sm" [ngClass]="islastFields(i) ? 'btn-success' : 'btn-danger'" (click)="addremoveFields(i)">
+                        <i class="fa" [ngClass]="islastFields(i) ? 'fa-plus' : 'fa-minus'" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- submit button -->
+    <div class="d-flex">
+        <div class="mr-auto">
+            <a class="text-capitalize text-info text-decoration-none"
+                routerLink="/auth">
+                login?
+            </a>
+        </div>
+        <div>
+            <button 
+                class="btn btn-outline-success btn-sm text-capitalize cursor-not-allowed" 
+                [disabled]="!bookForm.valid || spinnerStatus">
+                <span *ngIf="spinnerStatus" 
+                    class="spinner-border spinner-border-sm" 
+                    role="status" 
+                    aria-hidden="true"></span>
+                signup
+            </button>
+        </div>
+    </div>
+</form>

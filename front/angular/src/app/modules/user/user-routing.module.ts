@@ -15,10 +15,13 @@ const routes: Routes = [{
     component: DashboardComponent
   }, {
     path: 'books',
-    component: ListComponent,
-  }, {
-    path: 'books/create',
-    component: CreateComponent
+    children: [{
+      path: '',
+      component: ListComponent,
+    }, {
+      path: 'create',
+      component: CreateComponent
+    }]
   }]
 }];
 

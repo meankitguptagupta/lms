@@ -5,6 +5,7 @@ import { PasswordToggle } from 'src/app/helpers/password-toggle';
 import { UserService } from 'src/app/services/user/user.service';
 import { APIResponse } from 'src/app/models/api-response';
 import { LoginComponent } from '../login/login.component';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -36,8 +37,10 @@ export class SignupComponent implements OnInit {
   private signup(values:Signup):void {
     this.spinnerStatus = true;
     this._user.signup(values).subscribe((res:APIResponse) => {
-      this.loginComp.login({email: values.email, password: values.password});
-      this.spinnerStatus = false;
+      // wait for 100 ms
+      timer(100).subscribe(() => {
+        this.loginComp.login({email: values.email, password: values.password});
+      })
     }, (err:APIResponse) => {
       this.spinnerStatus = false;
     })
