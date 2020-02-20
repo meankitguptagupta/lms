@@ -4,7 +4,7 @@
 <form class="p-2" [formGroup]="bookForm" (submit)="submit()">
 
     <div class="row">
-        <div class="col">
+        <div class="col border-right">
             <!-- Tag ID field -->
             <div class="form-group">
                 <div class="input-group">
@@ -63,12 +63,23 @@
 
             <!-- is_premium field -->
             <div class="form-group">
-                <div class="form-check">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="radio" class="btn btn-secondary">Primium</button>
+                    <button type="radio" class="btn btn-secondary">Not Primium</button>
+                </div>
+                <!-- <div class="checkbox switcher text-capitalize">
+                    <label for="is_premium">
+                        is premium?
+                        <input type="checkbox" id="is_premium" formControlName="is_premium"/>
+                        <span><small></small></span>
+                    </label>
+                </div> -->
+                <!-- <div class="form-check switcher">
                     <input class="form-check-input" type="checkbox" id="is_premium" formControlName="is_premium"/>
                     <label class="form-check-label" for="is_premium">
                         Is Primium?
                     </label>
-                </div>
+                </div> -->
                 <app-show-errors [control]="bookForm.controls.is_premium"></app-show-errors>
             </div>
 
@@ -111,7 +122,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col border-left">
             <div formArrayName="fields"  *ngFor="let item of bookForm.get('fields')['controls']; let i = index;">  
                 <div [formGroupName]="i" class="form-group-name">
                     <div class="row p-2">
@@ -135,9 +146,10 @@
 
     <!-- submit button -->
     <div class="d-flex flex-row-reverse">
+        <!-- !bookForm.valid ||  -->
         <button 
             class="btn btn-outline-success btn-sm text-capitalize cursor-not-allowed" 
-            [disabled]="!bookForm.valid || spinnerStatus">
+            [disabled]="spinnerStatus">
             <span *ngIf="spinnerStatus" 
                 class="spinner-border spinner-border-sm" 
                 role="status" 

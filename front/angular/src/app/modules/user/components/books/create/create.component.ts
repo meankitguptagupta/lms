@@ -68,4 +68,8 @@ export class CreateComponent implements OnInit {
     })
   }
 
+  submit():void {
+    console.log(this.bookForm.value)
+  }
+
 }
