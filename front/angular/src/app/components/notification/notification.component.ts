@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Notification } from '../../models/notification';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 
-import { ToastAnimation } from './toast-animation';
-
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.css'],
-  animations: [ToastAnimation]
+  styleUrls: ['./notification.component.css']
 })
 export class NotificationComponent implements OnInit {
 
@@ -26,13 +23,4 @@ export class NotificationComponent implements OnInit {
   hideNotification():void {
     this.notification = null;
   }
-  
-  toggleToast() {
-    if (this.toastState == 'hide') {
-      this.toastState = 'show';
-    } else {
-      this.toastState = 'hide';
-    }
-  }
-
 }

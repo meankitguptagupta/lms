@@ -63,23 +63,16 @@
 
             <!-- is_premium field -->
             <div class="form-group">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="radio" class="btn btn-secondary">Primium</button>
-                    <button type="radio" class="btn btn-secondary">Not Primium</button>
+                <div class="input-group mb-2">
+                    <div class="btn-group btn-group-toggle d-flex w-100" data-toggle="buttons">
+                        <label class="btn btn-outline-secondary btn-primary text-capitalize cursor-pointer">
+                            <input type="radio" formControlName="is_premium" value="1" /> Primium
+                        </label>
+                        <label class="btn btn-outline-secondary text-capitalize cursor-pointer">
+                            <input type="radio" formControlName="is_premium" value="0" /> Not Primium
+                        </label>
+                    </div>
                 </div>
-                <!-- <div class="checkbox switcher text-capitalize">
-                    <label for="is_premium">
-                        is premium?
-                        <input type="checkbox" id="is_premium" formControlName="is_premium"/>
-                        <span><small></small></span>
-                    </label>
-                </div> -->
-                <!-- <div class="form-check switcher">
-                    <input class="form-check-input" type="checkbox" id="is_premium" formControlName="is_premium"/>
-                    <label class="form-check-label" for="is_premium">
-                        Is Primium?
-                    </label>
-                </div> -->
                 <app-show-errors [control]="bookForm.controls.is_premium"></app-show-errors>
             </div>
 
