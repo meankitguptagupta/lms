@@ -10,6 +10,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 export class NotificationComponent implements OnInit {
 
   notification:Notification;
+  toastState:string = 'hide';
 
   constructor(private _notification:NotificationService) { }
 
@@ -22,5 +23,4 @@ export class NotificationComponent implements OnInit {
   hideNotification():void {
     this.notification = null;
   }
-
 }

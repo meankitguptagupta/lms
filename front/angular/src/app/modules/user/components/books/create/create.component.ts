@@ -67,5 +67,9 @@ export class CreateComponent implements OnInit {
       this.academyTypes = Object.values(res.data);
     })
   }
-  
+
+  submit():void {
+    console.log(this.bookForm.value)
+  }
+
 }
