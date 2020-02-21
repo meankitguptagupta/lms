@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
-import { CommonService } from 'src/app/services/common/common.service';
+import { PublicService } from 'src/app/services/public/public.service';
 
 @Component({
   selector: 'app-create',
@@ -9,7 +9,7 @@ import { CommonService } from 'src/app/services/common/common.service';
 })
 export class CreateComponent implements OnInit {
 
-  constructor(private _fb:FormBuilder, private _common:CommonService) { }
+  constructor(private _fb:FormBuilder, private _public:PublicService) { }
 
   readonly title:string = 'create book';
 
@@ -52,20 +52,20 @@ export class CreateComponent implements OnInit {
   createItem(key:string = null, value:string = null) {
     return this._fb.group({
       key: new FormControl(key, [Validators.required, Validators.maxLength(20)]),
-      value: new FormControl(value, [Validators.required, Validators.maxLength(255)])
+      value: new FormControl(value, [Validators.required, Validators.maxLength(100)])
     });
   }
 
   getGeneres() {
-    this._common.generes().subscribe(res => {
+    this._public.generes().subscribe(res => {
       this.generes = Object.values(res.data);
     })
   }
 
   getAcademyTypes():void {
-    this._common.academyTypes().subscribe(res => {
+    this._public.academyTypes().subscribe(res => {
       this.academyTypes = Object.values(res.data);
     })
   }
-
+  
 }
