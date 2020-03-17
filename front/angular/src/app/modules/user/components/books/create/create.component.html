@@ -1,0 +1,3 @@
+<h5 class="card-title text-capitalize">Add Book</h5>
+<app-dynamic-form *ngIf="fields" [fields]="getFields()" [button]="button" (submitResp)="submit($event)">    
+</app-dynamic-form>

@@ -1,0 +1,24 @@
+<form [formGroup]="form" (submit)="submit()">
+    <div class="form-group" *ngFor="let field of fields">
+        <div [ngSwitch]="field.type">
+            <app-input *ngSwitchCase="'text'" [field]="field" [form]="form"></app-input>
+            <app-password *ngSwitchCase="'password'" [field]="field" [form]="form"></app-password>
+            <app-select *ngSwitchCase="'select'" [field]="field" [form]="form"></app-select>
+            <app-checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></app-checkbox>
+            <app-add-more-fields *ngSwitchCase="'add_more'" [field]="field" [form]="form"></app-add-more-fields>
+            <app-show-errors [control]="form.controls[field.name]"></app-show-errors>
+        </div>
+    </div>
+    
+    <button 
+        class="btn btn-outline-success btn-sm text-capitalize cursor-not-allowed"
+        [ngClass]="getButtonAlign(button?.align)"
+        [disabled]="!form.valid || button?.status">
+        <span *ngIf="button?.status"
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true">
+        </span>
+        {{ button?.label }}
+    </button>
+</form>

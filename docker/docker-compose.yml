@@ -27,18 +27,6 @@ services:
     ports:
       - 8080:8080
 
-  # Nodejs Container
-  web:
-    image: lms
-    container_name: lms-web
-    volumes:
-      - ../lms:/home/lms
-    ports:
-      - 3000:3000
-    tty: true
-    restart: always
-    command: ["npm", "run", "dev"]
-
   # Angular Container
   lmsfront:
     image: lms_angular
@@ -50,3 +38,15 @@ services:
       - ../front/angular:/home/angular
     tty: true
     command: ["ng", "serve", "--host", "0.0.0.0"]
+
+  # Nodejs Container
+  web:
+    image: lms
+    container_name: lms-web
+    volumes:
+      - ../lms:/home/lms
+    ports:
+      - 3000:3000
+    tty: true
+    restart: always
+    command: ["npm", "run", "dev"]

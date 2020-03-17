@@ -1,0 +1,9 @@
+<h5 class="card-title text-center text-capitalize">signup</h5>
+<app-dynamic-form [fields]="getFields()" [button]="button" (submitResp)="submit($event)">
+</app-dynamic-form>
+
+<hr/>
+
+<a routerLink="/auth" class="text-info text-decoration-none text-capitalize">
+    login
+</a>

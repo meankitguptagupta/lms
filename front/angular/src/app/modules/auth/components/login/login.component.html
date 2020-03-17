@@ -1,0 +1,17 @@
+<h5 class="card-title text-center text-capitalize">Login</h5>
+<app-dynamic-form [fields]="getFields()" [button]="button" (submitResp)="submit($event)"></app-dynamic-form>
+
+<hr/>
+
+<div class="d-flex justify-content-between">
+    <div class="p-2 bd-highlight">
+        <a routerLink="forgot-password" class="text-info text-decoration-none text-capitalize">
+            forgot-password?
+        </a>
+    </div>
+    <div class="p-2 bd-highlight">
+        <a routerLink="signup" class="text-info text-decoration-none text-capitalize">
+            signup?
+        </a>
+    </div>
+</div>
