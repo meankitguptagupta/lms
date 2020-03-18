@@ -1,13 +1,13 @@
-<div class="h4"></div>
+<div class="col-form-label col-form-label-sm text-capitalize">{{ field?.placeholder }}</div>
 <div [formGroup]="form">
     <div formArrayName="fields"  *ngFor="let item of form.get(field.name)['controls']; let i = index;">  
         <div [formGroupName]="i" class="form-group-name">
             <div class="row p-2">
-                <div class="col-5">
+                <div class="col-4">
                     <input formControlName="key" placeholder="Key" appTrim class="form-control" autocomplete="off" maxlength="20"/>
                     <app-show-errors [control]="item.controls.key"></app-show-errors>
                 </div>
-                <div class="col-6">
+                <div class="col-7">
                     <input formControlName="value" placeholder="value" appTrim class="form-control" autocomplete="off" maxlength="255"/>
                     <app-show-errors [control]="item.controls.key"></app-show-errors>
                 </div>

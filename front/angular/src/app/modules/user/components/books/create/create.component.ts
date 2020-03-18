@@ -55,4 +55,8 @@ export class CreateComponent implements OnInit {
     return this.fields;
   }
 
+  submit(values):void {
+    console.log(values)
+  }
+
 }

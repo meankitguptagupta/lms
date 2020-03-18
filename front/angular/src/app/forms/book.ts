@@ -52,10 +52,10 @@ export const Book = (generes:Array<SelectOption>, academyTypes:Array<SelectOptio
     name: 'academy_standard',
     placeholder: 'Academy Standard',
     faIcon: 'envelope',
-    validators: [Validators.nullValidator],
+    validators: [],
     maxLength:1,
 }, {
-    type: 'add_more',
+    type: 'fields',
     value: null,
     name: 'fields',
     placeholder: 'fields',

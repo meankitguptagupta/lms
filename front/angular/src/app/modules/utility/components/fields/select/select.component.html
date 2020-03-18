@@ -1,15 +1,15 @@
 <div class="input-group" [formGroup]="form">
     <div class="input-group-prepend">
         <div class="input-group-text">
-            <i class="fa fa-{{ field.faIcon }}"></i>
+            <i class="fa fa-{{ field?.faIcon }}"></i>
         </div>
     </div>
-    <select class="form-control text-capitalize form-control-sm" [formControlName]="field.name">
-        <option disabled selected class="text-capitalize">
+    <select class="form-control text-capitalize form-control-sm" [formControlName]="field?.name">
+        <option disabled [selected]="!field?.value" class="text-capitalize">
             {{ field?.placeholder }}
         </option>
-        <option *ngFor="let opt of field?.options" value="opt.key" class="text-capitalize">
-            {{ opt.value }}
+        <option *ngFor="let opt of field?.options" [selected]="field.value == opt.key" [value]="opt?.key" class="text-capitalize">
+            {{ opt?.value }}
         </option>
     </select>
 </div>

@@ -16,12 +16,18 @@ export class DynamicFormComponent implements OnInit {
   @Input() button:FormButton = {label: 'submit', status: false, align: 'block'};
   @Output() submitResp:EventEmitter<any> = new EventEmitter();
   form:FormGroup;
+  hasDupField:boolean = false;
 
   ngOnInit() {
     let formFields = {};
 
     for (let field of this.fields) {
       formFields[field.name] = new FormControl(field.value, field.validators);
+
+      // check if add-more field exists
+      if (field.type === 'fields') {
+        this.hasDupField = true;
+      }
     }
 
     this.form = new FormGroup(formFields);
