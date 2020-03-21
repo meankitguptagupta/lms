@@ -1,15 +1,6 @@
 version: '3.5'
 
 services:
-  web:
-    image: lms
-    container_name: lms-web
-    volumes:
-      - ../lms:/home/lms
-    ports:
-      - 3000:3000
-    tty: true
-    restart: always
 
   mysql:
     image: mysql:5.7
@@ -32,6 +23,17 @@ services:
     restart: always
     ports:
       - 8080:8080
+
+  web:
+    image: lms
+    container_name: lms-web
+    volumes:
+      - ../lms:/home/lms
+    ports:
+      - 3000:3000
+    tty: true
+    restart: always
+    command: ["npm", "run", "dev"]
 
   # lmsfront:
   #   image: lms_front
