@@ -7,10 +7,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { ResponseInterceptor } from './interceptors/response.interceptor';
+import { NotificationComponent } from './components/notification/notification.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, 
+    NotificationComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

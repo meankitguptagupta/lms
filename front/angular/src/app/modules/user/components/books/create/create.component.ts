@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { Observable, forkJoin } from 'rxjs';
 import { selectOptionCasting } from 'src/app/helpers/select-option-cast';
 import { SelectOption } from 'src/app/models/definations/select-option';
+import { ManipulateFields } from 'src/app/helpers/manipulate-fields';
 
 @Component({
   selector: 'app-create',
@@ -56,6 +57,7 @@ export class CreateComponent implements OnInit {
   }
 
   submit(values):void {
+    values['fields'] = ManipulateFields(values.fields);
     console.log(values)
   }
 

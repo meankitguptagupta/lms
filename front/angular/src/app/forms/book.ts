@@ -49,8 +49,8 @@ export const Book = (generes:Array<SelectOption>, academyTypes:Array<SelectOptio
 }, {
     type: 'checkbox',
     value: null,
-    name: 'academy_standard',
-    placeholder: 'Academy Standard',
+    name: 'is_premium',
+    placeholder: 'is_premium',
     faIcon: 'envelope',
     validators: [],
     maxLength:1,

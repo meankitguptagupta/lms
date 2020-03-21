@@ -1,9 +1,15 @@
-<div *ngIf="notification" 
-    [ngClass]="notification?.message ? 'show' : null"
-    class="alert alert-{{ notification?.type }} fade w-25 position-fixed shadow border mt-2 mr-2 notification" 
-    role="alert">
-    {{ notification?.message }}
-    <span class="close cursor-pointer" (click)="hideNotification()" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </span>
+<div class="position-absolute w-25 notification">
+    <div *ngFor="let notification of getNotification()"
+        [ngClass]="notification?.value?.message ? 'show' : null"
+        class="alert alert-{{ getType(notification?.value?.type) }} fade shadow border m-1"
+        role="alert" [attr.aria-index]="notification?.index">
+        {{ notification?.value?.message }}
+
+        <span class="close cursor-pointer"
+            (click)="deleteIndex(notification?.index)"
+            data-dismiss="alert"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </span>
+    </div>
 </div>

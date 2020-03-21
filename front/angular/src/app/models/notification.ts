@@ -1,11 +1,6 @@
-enum NotificationType {
-    danger,
-    success,
-    info,
-    warning
-}
+import { NotificationType } from '../enums/notification-type';
 
 export interface Notification {
-    type:string,
-    message:NotificationType
+    type:NotificationType,
+    message:string
 }
