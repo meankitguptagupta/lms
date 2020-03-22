@@ -57,7 +57,7 @@ export class CreateComponent implements OnInit {
   }
 
   submit(values):void {
-    values['fields'] = ManipulateFields(values.fields);
+    // values['fields'] = ManipulateFields(values.fields);
     console.log(values)
   }
 

@@ -12,7 +12,6 @@ import { NotificationType } from 'src/app/enums/notification-type';
 export class NotificationComponent implements OnInit {
 
   notifications:Object = {};
-  index:string;
 
   constructor(
     private _notification:NotificationService,
@@ -39,21 +38,17 @@ export class NotificationComponent implements OnInit {
 
   hideNotification(index:string):void {
     if (this.notifications[index]) {
-      this.index = index
-      this._ngZone.runOutsideAngular(() => {
+      this._ngZone.run(() => {
         setTimeout(() => {
-          this.deleteIndex(this.index);
-        }, 5000)
+          this.deleteIndex(index);
+        }, 3000)
       })
     }
   }
 
   deleteIndex(index:string):void {
     if (this.notifications[index]) {
-      this.elRef.nativeElement.querySelector(`[aria-index="${index}"]`).classList.remove('show')
-      setTimeout(() => {
-        delete this.notifications[index];
-      }, 500);
+      delete this.notifications[index];
     }
   }
 

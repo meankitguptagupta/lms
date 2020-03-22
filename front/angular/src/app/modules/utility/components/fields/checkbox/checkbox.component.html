@@ -2,11 +2,9 @@
     <input 
         type="checkbox"
         class="form-check-input"
-        id="exampleCheck1"
-        [value]="status"
-        (change)="status = $event.target.checked ? 1: 0"
+        [id]="field.name"
         [formControlName]="field.name">
-    <label class="form-check-label" for="exampleCheck1">
+    <label class="form-check-label" [for]="field.name">
         {{ field?.placeholder }}
     </label>
 </div>

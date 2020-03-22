@@ -13,7 +13,6 @@ export class CheckboxComponent implements OnInit {
 
   @Input() field:FormBase;
   @Input() form:FormGroup;
-  status:number = 0;
 
   ngOnInit() {
   }
