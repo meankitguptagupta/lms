@@ -16,5 +16,3 @@ WORKDIR /home/angular
 EXPOSE 4200
 
 COPY ./angular .
-
-RUN npm i

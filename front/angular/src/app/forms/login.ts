@@ -2,7 +2,7 @@ import { Validators } from '@angular/forms';
 
 export const Login = [{
     type: 'text',
-    value: 'admin@email.com',
+    value: null,
     name: 'email',
     placeholder: 'Email',
     faIcon: 'envelope',
@@ -10,7 +10,7 @@ export const Login = [{
     maxLength:191
 }, {
     type: 'password',
-    value: '123456',
+    value: null,
     name: 'password',
     placeholder: 'Password',
     faIcon: 'lock',

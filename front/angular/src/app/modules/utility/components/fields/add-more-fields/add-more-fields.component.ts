@@ -32,7 +32,7 @@ export class AddMoreFieldsComponent implements OnInit {
   createItem(key:string = null, value:string = null) {
     return this._fb.group({
       key: new FormControl(key, [Validators.required, Validators.maxLength(20)]),
-      value: new FormControl(value, [Validators.required, Validators.maxLength(255)])
+      value: new FormControl(value, [Validators.required, Validators.maxLength(150)])
     });
   }
 

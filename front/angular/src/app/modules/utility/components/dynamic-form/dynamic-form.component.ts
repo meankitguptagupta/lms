@@ -13,7 +13,12 @@ export class DynamicFormComponent implements OnInit {
   constructor() { }
 
   @Input() fields:Array<FormBase>;
-  @Input() button:FormButton = {label: 'submit', status: false, align: 'block'};
+  @Input() button:FormButton = {
+    label: 'submit',
+    status: false,
+    align: 'block'
+  };
+  
   @Output() submitResp:EventEmitter<any> = new EventEmitter();
   form:FormGroup;
   hasDupField:boolean = false;

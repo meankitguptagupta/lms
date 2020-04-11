@@ -39,7 +39,7 @@ export const Book = (generes:Array<SelectOption>, academyTypes:Array<SelectOptio
     type: 'text',
     value: null,
     name: 'academy_standard',
-    placeholder: 'Academy Standard',
+    placeholder: 'Academy Standard (Number only)',
     faIcon: 'envelope',
     validators: [Validators.required, Validators.maxLength(2)],
     directives:{
@@ -47,15 +47,15 @@ export const Book = (generes:Array<SelectOption>, academyTypes:Array<SelectOptio
     },
     maxLength:2,
 }, 
-// {
-//     type: 'checkbox',
-//     value: true,
-//     name: 'is_premium',
-//     placeholder: 'is premium',
-//     faIcon: 'envelope',
-//     validators: [],
-//     maxLength:1,
-// }, 
+{
+    type: 'checkbox',
+    value: '1',
+    name: 'is_premium',
+    placeholder: 'is premium',
+    faIcon: 'envelope',
+    validators: [],
+    maxLength:1,
+}, 
 {
     type: 'fields',
     value: null,

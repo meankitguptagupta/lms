@@ -10,18 +10,19 @@ import { TrimDirective } from './directives/trim/trim.directive';
 import { NumberOnlyDirective } from './directives/number-only/number-only.directive';
 import { CheckboxComponent } from './components/fields/checkbox/checkbox.component';
 import { AddMoreFieldsComponent } from './components/fields/add-more-fields/add-more-fields.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
   declarations: [
     ShowErrorsComponent, DynamicFormComponent, 
     InputComponent, SelectComponent, 
-    PasswordComponent, TrimDirective, NumberOnlyDirective, CheckboxComponent, AddMoreFieldsComponent
+    PasswordComponent, TrimDirective, NumberOnlyDirective, CheckboxComponent, AddMoreFieldsComponent, PaginationComponent
   ],
   imports: [
     CommonModule, ReactiveFormsModule
   ], exports: [
-    DynamicFormComponent
+    DynamicFormComponent, PaginationComponent
   ]
 })
 export class UtilityModule { }

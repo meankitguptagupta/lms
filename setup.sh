@@ -17,3 +17,7 @@ sudo chown -R $USER:www-data angular/
 chmod -R 777 angular/
 
 docker build --tag lms_angular .
+
+cd ../docker
+
+docker-compose run --rm --no-deps lmsfront bash -c "npm install"

@@ -9,6 +9,8 @@ import { Observable, forkJoin } from 'rxjs';
 import { selectOptionCasting } from 'src/app/helpers/select-option-cast';
 import { SelectOption } from 'src/app/models/definations/select-option';
 import { ManipulateFields } from 'src/app/helpers/manipulate-fields';
+import { BookService } from 'src/app/services/books/book.service';
+import { Book } from 'src/app/models/definations/book';
 
 @Component({
   selector: 'app-create',
@@ -19,7 +21,7 @@ export class CreateComponent implements OnInit {
 
   button:FormButton = {label: 'create', status: false, align: 'right'};
   
-  constructor(private _public:PublicService) { }
+  constructor(private _public:PublicService, private _book:BookService) { }
 
   fields:FormBase[];
 
@@ -57,8 +59,16 @@ export class CreateComponent implements OnInit {
   }
 
   submit(values):void {
-    // values['fields'] = ManipulateFields(values.fields);
-    console.log(values)
+    this.button.status = true;
+
+    values['fields'] = JSON.stringify(ManipulateFields(values.fields));
+    values['is_premium'] = values['is_premium'] ? 1 : 0
+
+    this._book.store(values as Book).subscribe(res => {
+      this.button.status = false;
+    }, err => {
+      this.button.status = false;
+    })
   }
 
 }

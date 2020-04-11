@@ -18,7 +18,7 @@ const routes:Routes = [{
             path: '',
             component: ListComponent
         }, {
-            path: 'new',
+            path: 'create',
             component: CreateComponent
         }]
     }]

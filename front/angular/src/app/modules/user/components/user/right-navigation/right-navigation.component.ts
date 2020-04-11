@@ -29,6 +29,8 @@ export class RightNavigationComponent implements OnInit {
     e.preventDefault();
     e.currentTarget.querySelector('i:last-child').classList.toggle('fa-angle-down')
     e.currentTarget.querySelector('i:last-child').classList.toggle('fa-angle-up')
+
+    document.getElementById('submenu1').classList.toggle('show')
   }
 
 }

@@ -9,6 +9,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { ResponseInterceptor } from './interceptors/response.interceptor';
 import { NotificationComponent } from './components/notification/notification.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     {provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

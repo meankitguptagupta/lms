@@ -1,1 +1,35 @@
-<p>list works!</p>
+<h5 class="card-title text-capitalize">Book</h5>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-sm table-bordered ">
+        <thead class="thead-dark">
+            <tr class="text-center">
+                <th class="text-capitalize">
+                    title
+                </th>
+                <th class="text-capitalize">
+                    genere
+                </th>
+                <th class="text-capitalize">
+                    academy type
+                    <sub>academy standard</sub>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of list">
+                <td class="text-capitalize">
+                    {{ book?.title }}
+                </td>
+                <td class="text-capitalize">
+                    {{ book?.genere }}
+                </td>
+                <td class="text-capitalize">
+                    {{ book?.academy_type }} 
+                    <sub>{{ book?.academy_standard }}</sub>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <app-pagination [totalItems]="115" [limit]="6" [currentPage]="13"></app-pagination> -->
